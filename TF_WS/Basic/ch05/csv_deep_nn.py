@@ -66,7 +66,7 @@ else:
 
 # 최적화 진행
 for step in range(2):
-    sess.run(train_op, feed_dict={X:x_data, Y:y_data}) 
+    sess.run(train_op, feed_dict={X:x_data, Y:y_data})
 
     print('Step : %d, ' % sess.run(global_step),
           'Cost : %.3f' % sess.run(cost, feed_dict={X:x_data, Y:y_data}))
