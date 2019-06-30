@@ -1,4 +1,4 @@
-# 머신러닝 학습의 Hello World 와 같은 MNIST(손글씨 숫자 인식) 문제를 신경망으로 풀어봅니다. 
+# 머신러닝 학습의 Hello World 와 같은 MNIST(손글씨 숫자 인식) 문제를 신경망으로 풀어봅니다.
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
