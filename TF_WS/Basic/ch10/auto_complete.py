@@ -31,7 +31,7 @@ def make_batch(seq_data):
         # 여기서 생성하는 input_batch 와 target_batch는 알파벳 배열의 인덱스 번호 입니다.
         # [(w-22, o-14, r-17] [w-22, o-14, o-14] [3, 4, 4] [3, 8, 21] ...
         input = [num_dic[n] for n in seq[:-1]]
-        print(input)
+        print('input :',input)
         # d-3, d-3, p-15, 4, 3 ...
         target = num_dic[seq[-1]]
         print(target)
@@ -41,7 +41,7 @@ def make_batch(seq_data):
         #  [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
         #  [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]]
         input_batch.append(np.eye(dic_len)[input])
-        print(input_batch)
+        print('input_batch :', input_batch)
 
         # 지금까지 손실함수로 사용하던 softmax_cross_entropy_with_logits 함수는 label 값을 one-hot 인코딩으로 넘겨줘야 하지만,
         # 이 예제에서 사용할 손실 함수인 sparse_softmax_cross_entropy_with_logits는 one-hot 인코딩을 사용하지 않으므로 index를 그냥 넘겨주면 됩니다.
@@ -160,8 +160,7 @@ accuracy = tf.reduce_mean(tf.cast(prediction_check, tf.float32))
 
 input_batch, target_batch = make_batch(seq_data)
 
-predict, accuracy_val = sess.run([prediction, accuracy],
-                                 feed_dict={X: input_batch, Y: target_batch})
+predict, accuracy_val = sess.run([prediction, accuracy], feed_dict={X: input_batch, Y: target_batch})
 
 predict_words = []
 for idx, val in enumerate(seq_data):
