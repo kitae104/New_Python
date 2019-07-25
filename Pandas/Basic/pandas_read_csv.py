@@ -1,3 +1,4 @@
+# 판다스 기본 처리
 import pandas as pd
 
 # DataFrame
