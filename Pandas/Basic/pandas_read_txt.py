@@ -1,4 +1,4 @@
-# tab으로 분리된 파일 읽기
+# tab으로 분리된 파일 읽기 - 헤더 테일 사용
 import pandas as pd
 
 df = pd.read_csv("../data/data_02.txt")
