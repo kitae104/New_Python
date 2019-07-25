@@ -1,4 +1,4 @@
-# 판다스 기본 처리
+# 판다스 기본 처리 - 데이터 추출
 import pandas as pd
 
 # DataFrame
