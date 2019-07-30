@@ -14,3 +14,35 @@ def getMatrix():
 
     return matrix
 
+# 행렬안의 모든 원소의 합을 반환
+def accumulate(m):
+    total = 0
+    for row in m:
+        total += sum(row)       # 한줄씩 합을 구함
+
+    return total
+
+def f(m):
+    for i in range(len(m)):
+        for j in range(len(m[i])):
+            m[i][j] += 1
+
+def printM(m):
+    for i in range(len(m)):
+        for j in range(len(m[i])):
+            print(m[i][j], end=" ")
+        print()
+
+def main():
+    m = getMatrix()
+    print(m)
+
+    #원소의 합계를 출력한다.
+    print('\n모든 원소의 총합은 : ', accumulate(m))
+
+    m = [[0, 0], [0, 1]]
+    printM(m)
+    f(m)
+    printM(m)
+
+main()
