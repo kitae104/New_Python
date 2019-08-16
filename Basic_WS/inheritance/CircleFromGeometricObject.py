@@ -24,3 +24,6 @@ class Circle(GeometricObject):
 
     def printCircle(self):
         print(self.__str__() + " 반지름 : " + str(self.__radius))
+
+    def __str__(self):
+        return super().__str__() + ", 반지름 : " + str(self.__radius)
