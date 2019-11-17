@@ -23,7 +23,7 @@ def make_invest_dataframe(firm_code):
     # print(temp_df)
 
     # 필요없는 컬럼 제거하기
-    temp_df = temp_df[temp_df.columns["2015/12", "2016/12", "2017/12", "2018/12", "2019/06"]]
+    temp_df = temp_df[["2015/12", "2016/12", "2017/12", "2018/12", "2019/06"]]
 
     # 필요한 행만 선택하기
     temp_df = temp_df.loc[
