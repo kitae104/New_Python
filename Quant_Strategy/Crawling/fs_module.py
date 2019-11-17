@@ -2,6 +2,9 @@
 import pandas as pd
 import requests
 
+###################################
+# 재무제표 데이터프레임 만들기
+###################################
 def make_fs_dataframe(firm_code):
     fs_url = "http://comp.fnguide.com/SVO2/ASP/SVD_Finance.asp?" \
              "pGB=1&cID=&MenuYn=Y&ReportGB=D&NewMenuID=103&stkGb=701" \
@@ -63,8 +66,39 @@ def make_fs_dataframe(firm_code):
     fs_df = pd.concat([temp_df, temp_df2, temp_df3])
     return fs_df
 
+###################################
+# 데이터프레임 형태 바꾸기
+###################################
+def change_df(code, fs_df):
+
+    for num, col in enumerate(fs_df.columns):
+        # 특정 기업의 특정 기간의 정보만 가져오기
+        temp_df = pd.DataFrame({code: fs_df[col]})
+
+        # 행과 열 바꾸기
+        temp_df = temp_df.T
+
+        # 날짜 컬럼을 윗줄에 항목을 아래줄에 표시
+        temp_df.columns = [[col] * len(fs_df), temp_df.columns]
+
+        if num == 0:
+            total_df = temp_df
+        else:
+            total_df = pd.merge(total_df, temp_df, how='outer', left_index=True, right_index=True)
+
+    return total_df
+
 if __name__ == "__main__":
-    df = make_fs_dataframe('A005380')
-    print(df)
-    df = make_fs_dataframe('A005930')
-    print(df)
+
+    firmcode_list = ['A005930', 'A005380', 'A035420', 'A003550', 'A034730']
+
+    for num, code in enumerate(firmcode_list):
+        fs_df = make_fs_dataframe(code)
+        fs_df_changed = change_df(code, fs_df)
+
+        if num == 0:
+            total_fs = fs_df_changed
+        else:
+            total_fs = pd.concat([total_fs, fs_df_changed])
+
+    print(total_fs)
