@@ -24,7 +24,7 @@ def make_fs_dataframe(firm_code):
 
     # 필요없는 컬럼 제거하기
     # - 정보가 변경될수 있기 때문에 :4 형식 사용
-    temp_df = temp_df[temp_df.columns[:4]]
+    temp_df = temp_df["2016/12", "2017/12", "2018/12", "2019/06"]
 
     # 필요한 행만 선택하기
     temp_df = temp_df.loc[['매출액','영업이익','당기순이익']]
@@ -40,7 +40,7 @@ def make_fs_dataframe(firm_code):
     temp_df2 = temp_df2.set_index(temp_df2.columns[0])
 
     # 컬럼 항목 설정 - 필요없는 컬럼 제거하기
-    temp_df2 = temp_df2[temp_df2.columns[:4]]
+    temp_df2 = temp_df2["2016/12", "2017/12", "2018/12", "2019/06"]
 
     # 필요한 행만 선택하기
     temp_df2 = temp_df2.loc[['자산','부채','자본']]
@@ -56,7 +56,7 @@ def make_fs_dataframe(firm_code):
     temp_df3 = temp_df3.set_index(temp_df3.columns[0])
 
     # 컬럼 항목 설정 - 필요없는 컬럼 제거하기
-    temp_df3 = temp_df3[temp_df3.columns[:4]]
+    temp_df3 = temp_df3["2016/12", "2017/12", "2018/12", "2019/06"]
 
     # 필요한 행만 선택하기
     temp_df3 = temp_df3.loc[['영업활동으로인한현금흐름']]
