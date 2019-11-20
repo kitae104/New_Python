@@ -26,13 +26,13 @@ def make_invest_dataframe(firm_code):
     temp_df = temp_df[["2015/12", "2016/12", "2017/12", "2018/12", "2019/06"]]
 
     # 필요한 행만 선택하기
-    temp_df = temp_df.loc[
+    temp_df = temp_df.reindex(
         ['PER계산에 참여한 계정 펼치기',
          'PCR계산에 참여한 계정 펼치기',
          'PSR계산에 참여한 계정 펼치기',
          'PBR계산에 참여한 계정 펼치기',
          '총현금흐름']
-    ]
+    )
 
     # 인덱스 명칭 변경
     temp_df.index = ['PER', 'PCR', 'PSR', 'PBR', '총현금흐름']
