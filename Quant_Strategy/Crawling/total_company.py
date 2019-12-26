@@ -12,7 +12,7 @@ def make_code(x):
     return 'A' + '0' * (6 - len(x)) + x
 
 if __name__ == "__main__":
-    path = r'D:\Projects\New_Python\Quant_Strategy\datas\data_191117.xls'
+    path = r'D:\SRC\New_Python\Quant_Strategy\datas\data_191117.xls'
     code_data = pd.read_excel(path)
     code_data = code_data[['종목코드','기업명']]
 
@@ -22,6 +22,7 @@ if __name__ == "__main__":
 
     # 모든 종목에 대해 재무제표 데이터 가져오기
     for num, code in enumerate(code_data['종목코드']):
+    # for num, code in enumerate(['A005930', 'A005380', 'A035420', 'A003550', 'A034730']):
         try:
             print(num, code)    # 순서와 현재 코드 출력
             time.sleep(1)       # 잠시 딜레이 제공
@@ -44,7 +45,7 @@ if __name__ == "__main__":
         except KeyError:
             continue
 
-    total_fs.to_excel(r'D:\Projects\New_Python\Quant_Strategy\Crawling\results\재무제표데이터.xlsx')
+    total_fs.to_excel(r'D:\SRC\New_Python\Quant_Strategy\results\재무제표데이터.xlsx')
     print(total_fs)
 
     # 모든 종목에 대해 재무비율 데이터 가져오기
@@ -70,7 +71,7 @@ if __name__ == "__main__":
         except KeyError:
             continue
 
-    total_fr.to_excel(r'D:\Projects\New_Python\Quant_Strategy\Crawling\results\재무비율데이터.xlsx')
+    total_fr.to_excel(r'D:\SRC\New_Python\Quant_Strategy\results\재무비율데이터.xlsx')
     print(total_fr)
 
     # 모든 종목에 대해 투자지표 데이터 가져오기
@@ -96,5 +97,5 @@ if __name__ == "__main__":
         except KeyError:
             continue
 
-    total_invest.to_excel(r'D:\Projects\New_Python\Quant_Strategy\Crawling\results\투자지표데이터.xlsx')
+    total_invest.to_excel(r'D:\SRC\New_Python\Quant_Strategy\results\투자지표데이터.xlsx')
     print(total_invest)

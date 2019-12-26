@@ -27,6 +27,7 @@ def make_fs_dataframe(firm_code):
     temp_df = temp_df[["2016/12", "2017/12", "2018/12", "2019/06"]]
 
     # 필요한 행만 선택하기
+    #temp_df = temp_df.loc[['매출액','영업이익','당기순이익']]
     temp_df = temp_df.reindex(['매출액','영업이익','당기순이익'])
     # print(temp_df)
     # print()
