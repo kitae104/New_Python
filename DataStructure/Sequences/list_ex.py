@@ -80,3 +80,22 @@ a = [1, 2, 3, 4, 5]
 print(a.index(3))
 # 2
 
+# 8. count()
+test = ["A", "B", "C", "A"]
+print(test.count("A"))
+# 2
+
+# 9. sort()
+test.sort()
+print(test)
+# ['A', 'A', 'B', 'C']
+
+test.sort(reverse=True)
+print(test)
+# ['C', 'B', 'A', 'A']
+
+# 10. reverse()
+test = ["A", "B", "C", "D"]
+test.reverse()
+print(test)
+# ['D', 'C', 'B', 'A']
