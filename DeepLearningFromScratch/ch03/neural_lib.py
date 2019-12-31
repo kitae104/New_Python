@@ -20,3 +20,11 @@ def sigmoid(x):
 # ReLU 함수
 def relu(x):
     return np.maximum(0, x)
+
+# softmax
+def softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a - c)     # 오버 플로우 해결
+    sum_exp_a = np.sum(exp_a)
+    y = exp_a / sum_exp_a
+    return y
