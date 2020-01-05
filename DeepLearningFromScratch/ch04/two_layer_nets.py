@@ -2,7 +2,8 @@
 import sys, os
 import numpy as np
 sys.path.append(os.pardir)
-from DeepLearningFromScratch.libs.neural_lib import *
+from DeepLearningFromScratch.libs.functions import *
+from DeepLearningFromScratch.libs.gradient import *
 
 class TwoLayerNet:
 
