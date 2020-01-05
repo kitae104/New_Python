@@ -27,25 +27,36 @@ def mean_squared_error(y, t):
     return 0.5 * np.sum((y-t)**2)
 
 # 교차 엔트로피 오차 함수
+# def cross_entropy_error(y, t):
+#     if y.ndim == 1:
+#         t = t.reshape(1, t.size)
+#         y = y.reshape(1, t.size)
+#
+#     batch_size = y.shape[0]
+#     delta = 1e-7
+#
+#     # 원-핫-인코딩 시 사용
+#     #return -np.sum(t * np.log(y + delta)) / batch_size
+#
+#     # 훈련 데이터가 원-핫 벡터라면 정답 레이블의 인덱스로 반환
+#     if t.size == y.size:
+#         t = t.argmax(axis=1)
+#
+#     # print(t)                              # 정답 위치
+#     # print(y[np.arange(batch_size), t])    # 정답 확률값
+#
+#     return -np.sum(np.log(y[np.arange(batch_size), t] + delta)) / batch_size
 def cross_entropy_error(y, t):
     if y.ndim == 1:
         t = t.reshape(1, t.size)
-        y = y.reshape(1, t.size)
-
-    batch_size = y.shape[0]
-    delta = 1e-7
-
-    # 원-핫-인코딩 시 사용
-    #return -np.sum(t * np.log(y + delta)) / batch_size
+        y = y.reshape(1, y.size)
 
     # 훈련 데이터가 원-핫 벡터라면 정답 레이블의 인덱스로 반환
     if t.size == y.size:
         t = t.argmax(axis=1)
 
-    # print(t)                              # 정답 위치
-    # print(y[np.arange(batch_size), t])    # 정답 확률값
-
-    return -np.sum(np.log(y[np.arange(batch_size), t] + delta)) / batch_size
+    batch_size = y.shape[0]
+    return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
 
 # 수치 미분
 def numerical_diff(f, x):
@@ -72,6 +83,7 @@ def numerical_diff(f, x):
 #         x[idx] = tmp_val    # 값 복원
 #
 #     return grad
+
 def numerical_gradient(f, x):
     h = 1e-4  # 0.0001
     grad = np.zeros_like(x)
