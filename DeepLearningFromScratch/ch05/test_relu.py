@@ -7,3 +7,4 @@ mask = (x < 0)
 print(mask)
 # [[False  True]
 #  [ True False]]
+
