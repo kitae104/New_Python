@@ -131,3 +131,77 @@ print(x)
 
 y = df.iloc[[0, 1], 1:]
 print(y)
+
+# 열 추가
+df['국어'] = [80, 70, 90]
+print(df)
+
+# 행 추가
+df.loc['동규'] = [90, 80, 70, 60, 50]
+print(df)
+
+# 값 변경
+df.loc['우현', '음악'] = 0
+print(df)
+
+df.loc['서준']['음악'] = 0
+print(df)
+
+df.iloc[2][2] = 0
+print(df)
+
+# 한번에 여러값 변경
+df.loc['서준', ['음악', '체육']] = 50
+print(df)
+
+df.loc['우현', ['음악', '체육']] = 90, 100
+print(df)
+
+# 행과 열 위치 바꾸기 (전치행렬)
+df = df.transpose()
+print(df)
+
+df = df.T
+print(df)
+
+# 특정 열을 행 인덱스로 설정
+exam_data = {'이름' : [ '서준', '우현', '인아'],
+             '수학' : [ 90, 80, 70],
+             '영어' : [ 98, 89, 95],
+             '음악' : [ 85, 95, 100],
+             '체육' : [ 100, 90, 90]}
+df = pd.DataFrame(exam_data)
+print(df)
+
+ndf = df.set_index(['이름'])
+print(ndf)
+
+ndf2 = ndf.set_index('음악')
+print(ndf2)
+
+ndf3 = ndf.set_index(['수학', '음악'])
+print(ndf3)
+
+# 행 인덱스 재배열
+dict_data = {'c0':[1,2,3], 'c1':[4,5,6], 'c2':[7,8,9], 'c3':[10,11,12], 'c4':[13,14,15]}
+df = pd.DataFrame(dict_data, index=['r0', 'r1', 'r2'])
+print(df)
+
+new_index = ['r0', 'r1', 'r2','r3', 'r4']
+ndf = df.reindex(new_index) # 인덱스 재지정 - 나머지는 NaN으로 채우기
+print(ndf)
+
+ndf2 = df.reindex(new_index, fill_value=0)  # 나머지는 0으로 채우기
+print(ndf2)
+
+# 행 인덱스 초기화 - 행 인덱스를 정수형으로 다시 초기화
+ndf4 = df.reset_index()
+print(ndf4)
+
+# 행 인덱스를 기준으로 데이터프레임 정렬
+ndf5 = df.sort_index(ascending=False)   # 내림차순정렬
+print(ndf5)
+
+# 특정 열을 기준으로 정렬하기
+ndf6 = df.sort_values(by='c1', ascending=False)    # by 대소문자 구별
+print(ndf6)
