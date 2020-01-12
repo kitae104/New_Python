@@ -2,13 +2,13 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
-tf.enable_eager_execution()
+tf.enable_eager_execution()     # 즉시 실행
 
 # 데이터
 x_data = [1, 2, 3, 4, 5]
 y_data = [1, 2, 3, 4, 5]
 
-# 변수
+# 변수(임의의 값 설정)
 W = tf.Variable(2.9)
 b = tf.Variable(0.5)
 
@@ -23,6 +23,8 @@ for i in range(100):
         cost = tf.reduce_mean(tf.square(hypothesis - y_data))
     # 기울기
     W_grad, b_grad = tape.gradient(cost, [W, b])
+
+    # W와 b 값 업데이트
     W.assign_sub(learning_rate * W_grad)
     b.assign_sub(learning_rate * b_grad)
 
@@ -34,5 +36,9 @@ plt.plot(x_data, hypothesis.numpy(), 'g-')
 plt.xlim(0, 8)
 plt.ylim(0, 8)
 plt.show()
+
+# 테스트
+print(W * 5 + b)
+print(W * 2.5 + b)
 
 
