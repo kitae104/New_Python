@@ -24,3 +24,10 @@ print(sess.run(adder_node, feed_dict={a:[1,2,3], b:[1,2,3]}))
 
 add_and_triple = adder_node * 3
 print(sess.run(add_and_triple, feed_dict={a:3, b:4.5}))
+
+v =[1., 2., 3., 4.]
+mean = tf.reduce_mean(v) # 2.5
+print(sess.run(mean))
+
+square = tf.square(3)   # 9
+print(sess.run(square))
