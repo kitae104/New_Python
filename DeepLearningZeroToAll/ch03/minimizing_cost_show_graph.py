@@ -16,3 +16,15 @@ cost = tf.reduce_mean(tf.square(hypothesis - Y))
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
+W_val = []
+cost_val = []
+
+for i in range(-30, 50):
+    feed_W = i * 0.1
+    curr_cost, curr_W = sess.run([cost, W], feed_dict={W: feed_W})
+    W_val.append(curr_W)
+    cost_val.append(curr_cost)
+
+# 비용함수 보이기
+plt.plot(W_val, cost_val)
+plt.show()
