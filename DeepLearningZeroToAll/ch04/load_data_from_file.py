@@ -10,7 +10,7 @@ y_data = xy[:, [-1]]    # 전체행에서 맨마지막 열만
 print(x_data.shape, x_data, len(x_data))
 print(y_data.shape, y_data)
 
-# 2. 텐서를 위한 플레이스 홀더
+# 2. 텐서를 위한 X, Y 플레이스홀더
 X = tf.placeholder(tf.float32, shape=[None, 3])
 Y = tf.placeholder(tf.float32, shape=[None, 1])
 
