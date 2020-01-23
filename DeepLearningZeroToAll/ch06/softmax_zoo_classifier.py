@@ -12,6 +12,7 @@ X = tf.placeholder(tf.float32, shape=[None, 16])
 Y = tf.placeholder(tf.int32, shape=[None, 1])     # 결과, 0~6
 nb_classes = 7  # 결과 종류 갯수 0~6
 
+# one-hot encoding은 tf.ont_hot 사용 이후에 tf.reshape를 하지 않으면 오류 발생 !!
 Y_one_hot = tf.one_hot(Y, nb_classes)       # one_hot shape = (?, 1, 7)
 Y_one_hot = tf.reshape(Y_one_hot, [-1, nb_classes]) # shape = (?, 7)
 
@@ -24,7 +25,7 @@ b = tf.Variable(tf.random_normal([nb_classes]), name='bias')
 logits = tf.matmul(X, W) + b
 hypothesis = tf.nn.softmax(logits)
 
-# 5. 비용함수(다양한 형태 - cross entropy)
+# 5. 비용함수(다양한 형태 - cross entropy) - 전달 파라미터 주의 !!
 cost_i = tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y_one_hot)
 cost = tf.reduce_mean(cost_i)
 
@@ -33,6 +34,7 @@ optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1)
 train = optimizer.minimize(cost)
 
 # 정확도 계산
+# argmax() : [0.1, 0.3, 0.5]의 argmax는 1로 가장 큰 값의 index 출력
 prediction = tf.argmax(hypothesis, 1)
 correct_prediction = tf.equal(prediction, tf.argmax(Y_one_hot, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, dtype=tf.float32))
