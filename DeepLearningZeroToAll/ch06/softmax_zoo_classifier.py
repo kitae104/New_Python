@@ -31,6 +31,7 @@ hypothesis = tf.nn.softmax(logits)
 # 5. 비용함수(다양한 형태 - cross entropy) - 전달 파라미터 주의 !!
 # 주의할 점은 Y_one_hot은 label로 1개의1, 여러개의 0으로 이루어진 one_hot 벡터 이어야 한다.
 # 그러면 각각의  logit에 대한 오차값이 결과로 나오고 그것을 tf.reduce_mean해주면 전체에 대한 평균오차값이 나온다.
+# cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(hypothesis), axis=1))
 cost_i = tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y_one_hot)
 cost = tf.reduce_mean(cost_i)   # 전체에 대한 평균오차값
 
