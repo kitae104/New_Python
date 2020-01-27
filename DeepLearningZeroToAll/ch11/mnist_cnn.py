@@ -24,13 +24,14 @@ keep_prob = tf.compat.v1.placeholder(tf.float32)
 
 # Input
 X = tf.compat.v1.placeholder(tf.float32, [None, 784])     # n개의 이미지 28 X 28 크기
-X_img = tf.reshape(X, [-1, 28, 28, 1])          # img 28x28x1 (black/white)
+X_img = tf.reshape(X, [-1, 28, 28, 1])          # -1은 n개의 입력 img 28x28x1 (black/white)
 Y = tf.compat.v1.placeholder(tf.float32, [None, 10])
 
+# ===============================================================================
 W1 = tf.Variable(tf.random.normal([3, 3, 1, 32], stddev=0.01))  # 필터의 크기 3 X 3 색상은 1 필터의 갯수는 32
 
 # 첫번째 Convolutional Layer L1으로 들어오는 이미지 형태 shape=(?, 28, 28, 1)
-L1 = tf.nn.conv2d(X_img, W1, strides=[1, 1, 1, 1], padding='SAME')
+L1 = tf.nn.conv2d(X_img, W1, strides=[1, 1, 1, 1], padding='SAME')  # 원래 이미지와 같은 크기로 작성
 print(L1)           # Tensor("Conv2D:0", shape=(?, 28, 28, 32), dtype=float32)
 
 L1 = tf.nn.relu(L1)
@@ -45,7 +46,7 @@ L1 = tf.nn.dropout(L1, keep_prob=keep_prob)
 print(L1)           # Tensor("dropout/mul:0", shape=(?, 14, 14, 32), dtype=float32)
 
 #======================================================================================
-# L2으로 들어오는 이미지 형태 shape=(?, 14, 14, 32)
+# L2으로 들어오는 이미지 형태 shape=(?, 14, 14, 32) -- 깊이는 동일함
 W2 = tf.Variable(tf.random.normal([3, 3, 32, 64], stddev=0.01))  # 필터의 크기 3 X 3 색상은 1 필터의 갯수는 64
 
 # 두번째 Convolutional Layer L2으로 들어오는 이미지 형태 shape=(?, 14, 14, 32)
@@ -62,7 +63,7 @@ print(L2)           # Tensor("MaxPool_1:0", shape=(?, 7, 7, 64), dtype=float32)
 L2 = tf.nn.dropout(L2, keep_prob=keep_prob)
 
 #======================================================================================
-# L3으로 들어오는 이미지 형태 shape=(?, 14, 14, 32)
+# L3으로 들어오는 이미지 형태 shape=(?, 7, 7, 128)
 W3 = tf.Variable(tf.random.normal([3, 3, 64, 128], stddev=0.01))  # 필터의 크기 3 X 3 색상은 1 필터의 갯수는 64
 
 # 두번째 Convolutional Layer L2으로 들어오는 이미지 형태 shape=(?, 14, 14, 32)
@@ -74,7 +75,7 @@ print(L3)           # Tensor("Relu_1:0", shape=(?, 14, 14, 64), dtype=float32)
 
 # stride에 의해 크기가 줄어듬 14 X 14
 L3 = tf.nn.max_pool(L3, ksize=[1,2,2,1], strides=[1,2,2,1], padding="SAME")
-print(L2)           # Tensor("MaxPool_1:0", shape=(?, 7, 7, 64), dtype=float32)
+print(L2)           # Tensor("MaxPool_1:0", shape=(?, 4, 4, 128), dtype=float32)
 
 L3 = tf.nn.dropout(L3, keep_prob=keep_prob)
 
