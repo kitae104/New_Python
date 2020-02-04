@@ -70,3 +70,40 @@ age_zscore = grouped.age.transform(z_score)
 print(age_zscore.loc[[1, 9, 0]], '\n')
 print(len(age_zscore), '\n')
 print(age_zscore.loc[0:9], '\n')
+
+# 그룹 객체 필터링
+# filter() : 조건식을 가진 함수를 전달하면 조건이참인 그룹만을 남긴다.
+# class 열을 기준으로 분할
+grouped2 = df.groupby(['class'])
+
+# 데이터 개수가 200개 이상인 그룹만을 필터링하여 데이터프레임으로 반환
+grouped_filter = grouped2.filter(lambda x : len(x) > 200)
+print(grouped_filter.head(), '\n')
+
+# age 열의 평균이 30보다 작은 그룹만을 필터링하여 데이터프레임으로 반환
+grouped_age = grouped2.filter(lambda x : x.age.mean() < 30)
+print(grouped_age.tail(), '\n')
+
+# 그룹 객체에 함수 매핑
+# apply()는 객체의 개별 원소를 특정 함수에 일대일로 매핑한다.
+# 집계 : 각 그룹별 요약 통계정보를 집계
+agg_grouped = grouped2.apply(lambda x : x.describe())
+print(agg_grouped, '\n')
+
+# z-score를 계산하는 사용자 함수 정의
+# 수집한 개별 데이터에서 그 데이터 집단 전체의 평균을 빼고 표준편차로 나누어줌
+def z_score(x):
+    return (x - x.mean()) / x.std()
+
+age_zscore2 = grouped2.age.apply(z_score)
+print(age_zscore.head(), '\n')
+
+# 필터링 : age 열의 데이터 평균이 30보다 작은 그룹만을 필터링하여 출력
+age_filter = grouped2.apply(lambda x : x.age.mean() < 30)
+print(age_filter, '\n')
+
+for x in age_filter.index:
+    if age_filter[x] == True:
+        age_filter_df = grouped2.get_group(x)
+        print(age_filter_df.head())
+        print('\n')
