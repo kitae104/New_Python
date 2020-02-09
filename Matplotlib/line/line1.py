@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #선 그래프
 import pandas as pd
 import matplotlib.pyplot as plt
