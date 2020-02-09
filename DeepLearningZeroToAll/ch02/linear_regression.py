@@ -1,6 +1,6 @@
 # 선형 회귀 구현하기
-import tensorflow as tf
-
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 # x_train = [1, 2, 3]
 # y_train = [1, 2, 3]
 X = tf.placeholder(tf.float32)
