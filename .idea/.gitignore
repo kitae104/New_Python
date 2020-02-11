@@ -1,2 +1,8 @@
 # Default ignored files
 /workspace.xml
+
+# Environments
+.env
+.venv
+env/
+venv/
