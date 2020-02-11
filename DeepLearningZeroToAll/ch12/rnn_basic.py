@@ -5,10 +5,11 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.contrib import rnn
 import pprint
+
 pp = pprint.PrettyPrinter(indent=4)
 sess = tf.compat.v1.InteractiveSession()
 
-# One hot encoding for each char in 'hello'
+# One hot encoding으로 'hello'를 설정
 h = [1, 0, 0, 0]
 e = [0, 1, 0, 0]
 l = [0, 0, 1, 0]
@@ -20,6 +21,7 @@ with tf.variable_scope('one_cell') as scope:
     hidden_size = 2
     #cell = tf.keras.layers.SimpleRNNCell(units=hidden_size)
     cell = tf.contrib.rnn.BasicLSTMCell(num_units=hidden_size)
+    # cell = rnn.GRUCell(num_units=hidden_size)
     print(cell.output_size, cell.state_size)
 
     x_data = np.array([[h]], dtype=np.float32) # x_data = [[[1,0,0,0]]]

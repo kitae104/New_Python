@@ -1,3 +1,4 @@
+# 최소 비용함수 구하기 
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
