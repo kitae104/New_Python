@@ -1,4 +1,4 @@
-# 세로형 막대 그래프
+# 가로형 막대 그래프
 import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate       # 결과 테이블 형태로 출력
@@ -29,22 +29,24 @@ df_seoul.set_index('전입지', inplace=True)
 # 서울에서 '충청남도','경상북도', '강원도', '전라남도'로 이동한 인구 데이터 값만 선택
 col_years = list(map(str, range(2010, 2018)))
 df_4 = df_seoul.loc[['충청남도','경상북도', '강원도', '전라남도'], col_years]
-df_4 = df_4.transpose()  # 행과 열을 전치
-# print(tabulate(df_4, headers='keys', tablefmt='psql'))
+
+# 2010-2017년 이동 인구 수를 합계하여 새로운 열로 추가
+df_4['합계'] = df_4.sum(axis=1)   # 행정보 합계
+
+# 합계 부분만 가장 큰 값부터 정렬
+df_total = df_4[['합계', '2010']].sort_values(by='합계', ascending=True)
+# print(tabulate(df_total, headers='keys', tablefmt='psql'))
 
 # 스타일 서식 지정
 plt.style.use('ggplot')
 
-# 데이터프레임의 인덱스를 정수형으로 변경 (x축 눈금 라벨 표시)
-df_4.index = df_4.index.map(int)
-
 # 막대 그래프 그리기
-df_4.plot(kind='bar', figsize=(20, 10), width=0.7, color=['orange', 'green', 'skyblue', 'blue'])
+df_total.plot(kind='barh', figsize=(10, 5), width=0.5, color=['orange','skyblue'])
 
 plt.title('서울 -> 타시도 인구 이동', size=30)
-plt.ylabel('이동 인구 수', size=20)
-plt.xlabel('기간', size=20)
-plt.ylim(5000, 30000)
+plt.ylabel('전입지', size=20)
+plt.xlabel('이동인구수', size=20)
+# plt.ylim(5000, 30000)
 plt.legend(loc='best', fontsize=15)
 
 plt.show()

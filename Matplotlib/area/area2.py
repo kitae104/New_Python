@@ -1,4 +1,4 @@
-# 면적 그래프 (stacked=False) 인 경우
+# 면적 그래프 (stacked=True) 인 경우
 import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate       # 결과 테이블 형태로 출력
