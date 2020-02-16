@@ -16,42 +16,51 @@ if __name__ == "__main__":
 
     # 하이퍼파라미터
     iters_num = 10000               #반복횟수
-    train_size = x_train.shape[0]
-    batch_size = 100                # 미니배치 크기
+    train_size = x_train.shape[0]   # 학습 사이즈
+    batch_size = 100                # 미니배치 크기(전체에서 100개 추출)
     learning_rate = 0.1             # 학습률
 
-    # 1에폭당 반복 수
+    # 1 에폭당 반복 수
     iter_per_epoch = max(train_size / batch_size, 1)
 
+    # 신경망 구성
     network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 
-    for i in range(iters_num):
+    for i in range(iters_num):  # 갱신횟수
         # 미니배치 획득
-        batch_mask = np.random.choice(train_size, batch_size)   # train_size 범위에서 batch_size 만큼 추출
+        batch_mask = np.random.choice(train_size, batch_size)   # train_size 범위에서 batch_size 만큼 추출 임의로 추출
         x_batch = x_train[batch_mask]       # batch_mask 위치의 학습 데이터를 100개 추출
         t_batch = t_train[batch_mask]       # batch_mask 위치의 정답 레이블을 100개 추출
 
         # 기울기 계산
-        grad = network.numerical_gradient(x_batch, t_batch)
-        # grad = network.gradient(x_batch, t_batch) # 성능 개선판
+        # grad = network.numerical_gradient(x_batch, t_batch)
+        grad = network.gradient(x_batch, t_batch) # 성능 개선판
 
         # 매개변수 갱신
         for key in ("W1", "b1", "W2", "b2"):
-            network.params[key] -= learning_rate * grad[key]
+            network.params[key] -= learning_rate * grad[key]    # 해당 파라미터 갱신
 
         # 학습 경과 기록
-        loss = network.loss(x_batch, t_batch)
-        train_loss_list.append(loss)
+        loss = network.loss(x_batch, t_batch)   # 비용 계산
+        train_loss_list.append(loss)            # 손실함수값 배열에 추가
 
         # 1에폭당 정확도 계산
         if i % iter_per_epoch == 0:
-            train_acc = network.accuracy(x_train, t_train)
-            test_acc = network.accuracy(x_test, t_test)
+            train_acc = network.accuracy(x_train, t_train)  # 학습 정확도
+            test_acc = network.accuracy(x_test, t_test)     # 테스트 정확도
             train_acc_list.append(train_acc)
             test_acc_list.append(test_acc)
             print("train acc, test acc | " + str(train_acc) + ", " + str(test_acc))
 
-    # 그래프 그리기
+    # 손실함수 그래프 그리기
+    x = np.arange(iters_num)
+    plt.plot(x, train_loss_list, label='train loss')
+    plt.xlabel("iteration")
+    plt.ylabel("loss")
+    plt.ylim(0, 10.0)
+    plt.show()
+
+    # 정확도 추이 그래프 그리기
     markers = {'train': 'o', 'test': 's'}
     x = np.arange(len(train_acc_list))
     plt.plot(x, train_acc_list, label='train acc')
