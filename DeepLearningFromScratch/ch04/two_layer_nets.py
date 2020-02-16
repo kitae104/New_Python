@@ -12,8 +12,8 @@ class TwoLayerNet:
         #가중치 초기화
         self.params = {}    # 신경망 매개변수를 보관하는 딕셔너리
 
-        self.params["W1"] = weight_init_std * np.random.randn(input_size, hidden_size)  # 1번째 층 가중치
-        self.params["b1"] = np.zeros(hidden_size)                                       # 1번째 층 편향
+        self.params["W1"] = weight_init_std * np.random.randn(input_size, hidden_size)  # 1번째 층 가중치 - 임의의 값
+        self.params["b1"] = np.zeros(hidden_size)                                       # 1번째 층 편향 - 임의의 값
         self.params["W2"] = weight_init_std * np.random.randn(hidden_size, output_size) # 2번째 층 가중치
         self.params["b2"] = np.zeros(output_size)                                       # 2번째 층 편향
 
@@ -23,9 +23,9 @@ class TwoLayerNet:
         b1, b2 = self.params["b1"], self.params["b2"]
 
         a1 = np.dot(x, W1) + b1
-        z1 = sigmoid(a1)
+        z1 = sigmoid(a1)            # 활성화 함수
         a2 = np.dot(z1, W2) + b2
-        y = softmax(a2)
+        y = softmax(a2)             # 확률로 변경
 
         return y
 
@@ -38,20 +38,41 @@ class TwoLayerNet:
     # 정확도 구하기
     def accuracy(self, x, t):
         y = self.predict(x)
-        y = np.argmax(y, axis=1)
+        y = np.argmax(y, axis=1)    # 각 행에서 큰 값 위치
         t = np.argmax(t, axis=1)
 
-        accuracy = np.sum(y == t) / float(x.shape[0])
+        accuracy = np.sum(y == t) / float(x.shape[0])   # 예측값과 정답이 같은 경우를 전체 갯수로 나누어 정확도 계산
         return accuracy
 
-    # 가중치 매개변수의 기울기 구하기
+    # 가중치 매개변수의 기울기 구하기 -> 이후에는 역전파를 사용하는 gradient() 로 변경
     def numerical_gradient(self, x, t):      # x: 입력 데이터, t : 정답 레이블
         loss_W = lambda W: self.loss(x, t)
 
         grads = {}  # 기울기를 보관하는 딕셔너리 변수
+        # numerical_gradient(f, X) - f: loss_W 함수, X : params[]
         grads["W1"] = numerical_gradient(loss_W, self.params["W1"]) # 1번째 층 가중치의 기울기
         grads["b1"] = numerical_gradient(loss_W, self.params["b1"]) # 1번째 층 편향의 기울기
         grads["W2"] = numerical_gradient(loss_W, self.params["W2"]) # 2번째 층 가중치의 기울기
         grads["b2"] = numerical_gradient(loss_W, self.params["b2"]) # 2번째 층 편향의 기울기
 
         return grads
+
+if __name__ == "__main__":
+    net = TwoLayerNet(input_size=784, hidden_size=100, output_size=10)
+    print(net.params['W1'].shape)
+    print(net.params['b1'].shape)
+    print(net.params['W2'].shape)
+    print(net.params['b2'].shape)
+
+    x = np.random.rand(100, 784)    # 더미 입력 데이터 100장 분량
+    t = np.random.rand(100, 10)     # 정답 레이블 100장 분량
+
+    grads = net.numerical_gradient(x, t)
+    print(grads['W1'].shape)
+    print(grads['b1'].shape)
+    print(grads['W2'].shape)
+    print(grads['b2'].shape)
+
+    y = net.predict(x)
+
+
