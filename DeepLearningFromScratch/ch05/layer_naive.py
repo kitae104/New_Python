@@ -20,13 +20,13 @@ class MulLayer:
 # 덧셈 계층
 class AddLayer:
     def __init__(self):
-        pass
+        pass                    # 아무것도 하지 않음
 
     def forward(self, x, y):
         out = x + y
         return out
 
-    def backward(self, dout):
+    def backward(self, dout):   # dout : 미분값
         dx = dout * 1
         dy = dout * 1
         return dx, dy
