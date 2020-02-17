@@ -9,14 +9,14 @@ class Relu:
         self.mask = None
 
     def forward(self, x):
-        self.mask = (x <= 0)
-        out = x.copy()
-        out[self.mask] = 0
+        self.mask = (x <= 0)    # 0보다 작은 경우 확인
+        out = x.copy()          # x 복사
+        out[self.mask] = 0      # 0보다 작은 경우는 0으로 설정
 
         return out
 
     def backward(self, dout):
-        dout[self.mask] = 0
+        dout[self.mask] = 0     # 0 보다 작은 곳은 0으로 설정
         dx = dout
 
         return dx
@@ -26,11 +26,13 @@ class Sigmoid:
     def __init__(self):
         self.out = None
 
+    # 순전파
     def forward(self, x):
         out = sigmoid(x)
         self.out = out
         return out
 
+    # 역전파
     def backward(self, dout):
         dx = dout * (1.0 - self.out) * self.out
 
@@ -83,11 +85,11 @@ class SoftmaxWithLoss:
     def backward(self, dout=1):
         batch_size = self.t.shape[0]
         if self.t.size == self.y.size: # 정답 레이블이 원-핫 인코딩 형태일 때
-            dx = (self.y - self.t) / batch_size
+            dx = (self.y - self.t) / batch_size     # 데이터 1개당 오차를 앞 계층으로 전달
         else:
             dx = self.y.copy()
             dx[np.arange(batch_size), self.t] -= 1
-            dx = dx / batch_size
+            dx = dx / batch_size    # 데이터 1개당 오차를 앞 계층으로 전달
         
         return dx
 
