@@ -43,6 +43,8 @@ def mean_squared_error(y, t):
     return 0.5 * np.sum((y-t)**2)
 
 
+# y : 신경망 출력
+# t : 정답 레이블
 def cross_entropy_error(y, t):
     if y.ndim == 1:
         t = t.reshape(1, t.size)
@@ -50,10 +52,10 @@ def cross_entropy_error(y, t):
         
     # 훈련 데이터가 원-핫 벡터라면 정답 레이블의 인덱스로 반환
     if t.size == y.size:
-        t = t.argmax(axis=1)
+        t = t.argmax(axis=1)    # 각 행에서 큰 값 찾기
              
-    batch_size = y.shape[0]
-    return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size
+    batch_size = y.shape[0]     # 출력 갯수
+    return -np.sum(np.log(y[np.arange(batch_size), t] + 1e-7)) / batch_size # 1개당 평균 손실 함수 계산
 
 
 def softmax_loss(X, t):

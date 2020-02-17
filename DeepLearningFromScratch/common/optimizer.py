@@ -6,11 +6,13 @@ class SGD:
     """확률적 경사 하강법（Stochastic Gradient Descent）"""
 
     def __init__(self, lr=0.01):
-        self.lr = lr
+        self.lr = lr                    # 학습률
         
-    def update(self, params, grads):
-        for key in params.keys():
-            params[key] -= self.lr * grads[key] 
+    def update(self, params, grads):    # params(W, b)와 grads 기울기
+        for i in range(len(params)):
+            params[i] -= self.lr * grads[i]
+        # for key in params.keys():
+        #     params[key] -= self.lr * grads[key]
 
 
 class Momentum:
