@@ -34,7 +34,7 @@ class TowLayerNet:
     # 추론 수행 - 순전파 진행
     def predict(self, x):
         for layer in self.layers:
-            x = layer.forward()
+            x = layer.forward(x)
 
         return x
 
@@ -46,7 +46,7 @@ class TowLayerNet:
         return loss
 
     # 역전파
-    def backward(self, dout):
+    def backward(self, dout=1):
         dout = self.loss_layer.backward(dout)
         for layer in reversed(self.layers):         # 역순으로 진행
             dout =layer.backward(dout)
