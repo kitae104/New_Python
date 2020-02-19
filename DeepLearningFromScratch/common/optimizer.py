@@ -9,10 +9,10 @@ class SGD:
         self.lr = lr                    # 학습률
         
     def update(self, params, grads):    # params(W, b)와 grads 기울기
-        for i in range(len(params)):
-            params[i] -= self.lr * grads[i]
-        # for key in params.keys():
-        #     params[key] -= self.lr * grads[key]
+        # for i in range(len(params)):
+        #     params[i] -= self.lr * grads[i]
+        for key in params.keys():
+            params[key] -= self.lr * grads[key]
 
 
 class Momentum:
@@ -73,8 +73,8 @@ class AdaGrad:
                 self.h[key] = np.zeros_like(val)
             
         for key in params.keys():
-            self.h[key] += grads[key] * grads[key]
-            params[key] -= self.lr * grads[key] / (np.sqrt(self.h[key]) + 1e-7)
+            self.h[key] += grads[key] * grads[key]      #  기울기 제곱 계산
+            params[key] -= self.lr * grads[key] / (np.sqrt(self.h[key]) + 1e-7) # 기울기를 루트 h 값으로 나눠줌
 
 
 class RMSprop:
