@@ -1,3 +1,4 @@
+# 가중치 초깃값 비교
 # coding: utf-8
 import os
 import sys
@@ -51,10 +52,13 @@ for i in range(max_iterations):
 # 3. 그래프 그리기==========
 markers = {'std=0.01': 'o', 'Xavier': 's', 'He': 'D'}
 x = np.arange(max_iterations)
+
 for key in weight_init_types.keys():
     plt.plot(x, smooth_curve(train_loss[key]), marker=markers[key], markevery=100, label=key)
+
 plt.xlabel("iterations")
 plt.ylabel("loss")
 plt.ylim(0, 2.5)
 plt.legend()
+
 plt.show()
