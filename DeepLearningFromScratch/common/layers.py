@@ -1,3 +1,4 @@
+# 레이어 클래스들
 # coding: utf-8
 import numpy as np
 from DeepLearningFromScratch.common.functions import *
@@ -99,7 +100,7 @@ class Dropout:
     http://arxiv.org/abs/1207.0580
     """
     def __init__(self, dropout_ratio=0.5):
-        self.dropout_ratio = dropout_ratio
+        self.dropout_ratio = dropout_ratio  # 제거할 뉴런의 비율
         self.mask = None
 
     def forward(self, x, train_flg=True):
