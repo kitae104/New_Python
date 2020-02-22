@@ -1,3 +1,4 @@
+# 합성곱 계층 클래스
 import numpy as np
 from DeepLearningFromScratch.common.util import im2col, col2im
 
@@ -11,16 +12,22 @@ class Convolution:
 
     def forward(self, x):
         FN, C, FH, FW = x.W.shape   # 필터
-        N, C, H, W = x.shape
+        N, C, H, W = x.shape        # 데이터
 
         out_h = int(1 + (H + 2*self.pad - FH) / self.stride)
         out_w = int(1 + (W + 2*self.pad - FW) / self.stride)
 
-        col = im2col(x, FH, FW, self.stride, self.pad)
-        col_W = self.W.reshape(FN, -1).T    # 필터 전개
-        out = np.dot(col, col_W) + self.b
 
-        # 축 순서 변경경
+        # x : 4차원 배열 형태의 입력 데이터(이미지 수, 채널 수, 높이, 너비)
+        # FH : 필터의 높이
+        # FW : 필터의 너비
+        # stride : 스트라이드
+        # pad : 패딩
+        col = im2col(x, FH, FW, self.stride, self.pad)  # 평탄화
+        col_W = self.W.reshape(FN, -1).T                # 필터 전개, -1 기능.
+        out = np.dot(col, col_W) + self.b               # 입력데이터 X 필터 + 편향
+
+        # 축 순서 변경(N, H, W, C) --> (N, C, H, W)
         out = out.reshape(N, out_h, out_w, -1).transpose(0, 3, 1, 2)
 
         return out
@@ -34,6 +41,14 @@ class Convolution:
         self.dW = self.dW.transpose(1, 0).reshape(FN, C, FH, FW)
 
         dcol = np.dot(dout, self.col_W.T)
+
+        # (im2col과 반대) 2차원 배열을 입력받아 다수의 이미지 묶음으로 변환한다.
+        # dcol : 2차원 배열(입력 데이터)
+        # input_shape : 원래 이미지 데이터의 형상（예：(10, 1, 28, 28)）
+        # FH : 필터의 높이
+        # FW : 필터의 너비
+        # stride : 스트라이드
+        # pad : 패딩
         dx = col2im(dcol, self.x.shape, FH, FW, self.stride. self.pad)
 
         return dx
