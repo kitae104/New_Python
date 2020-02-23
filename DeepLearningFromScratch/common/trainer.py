@@ -1,3 +1,4 @@
+# 공통으로 사용할 트레이너 클래스
 # coding: utf-8
 import sys
 sys.path.append('..')
@@ -74,6 +75,17 @@ class Trainer:
 
 class Trainer2:
     """신경망 훈련을 대신 해주는 클래스
+    network : 구성된 신경망 레이어
+    x_train : 학습 데이터
+    t_train : 학습 정답 데이터
+    x_test : 테스트 데이터
+    t_test : 테스트 정답 데이터
+    epochs : 에폭 횟수
+    mini_batch_size : 미니 배치 사이즈(한번에 수행할 크기)
+    optimizer : 사용할 최적화 알고리즘
+    optimizer_param : 최적화 알고리즘 파라미터(학습률)
+    evaluate_sample_num_per_epoch :
+    verbose :
     """
 
     def __init__(self, network, x_train, t_train, x_test, t_test,
@@ -115,7 +127,9 @@ class Trainer2:
 
         loss = self.network.loss(x_batch, t_batch)
         self.train_loss_list.append(loss)
-        if self.verbose: print("train loss:" + str(loss))
+
+        if self.verbose:
+            print("train loss:" + str(loss))
 
         if self.current_iter % self.iter_per_epoch == 0:
             self.current_epoch += 1
@@ -132,9 +146,11 @@ class Trainer2:
             self.train_acc_list.append(train_acc)
             self.test_acc_list.append(test_acc)
 
-            if self.verbose: print(
+            if self.verbose:
+                print(
                 "=== epoch:" + str(self.current_epoch) + ", train acc:" + str(train_acc) + ", test acc:" + str(
                     test_acc) + " ===")
+
         self.current_iter += 1
 
     def train(self):
