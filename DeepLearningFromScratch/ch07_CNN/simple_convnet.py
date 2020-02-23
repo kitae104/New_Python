@@ -1,3 +1,4 @@
+# 단순 합성곱 네트워크 클래스
 import pickle
 
 import numpy as np
