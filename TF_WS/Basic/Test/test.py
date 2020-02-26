@@ -1,5 +1,6 @@
-import tensorflow as tf
-
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 # 그래프 생성
 node1 = tf.constant(3.0, tf.float32)
 node2 = tf.constant(4.0)
