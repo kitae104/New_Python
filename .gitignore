@@ -2247,3 +2247,4 @@ venv/Scripts/wheel.exe
 venv/etc/
 venv/pyvenv.cfg
 venv/share/
+/venv/
