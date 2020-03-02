@@ -49,6 +49,7 @@ plt.figure(figsize=(12, 6))
 
 # x, y축 데이터를 plot 함수에 입력
 # plt.plot(sr_one.index, sr_one.values)
+# 스타일 문자열은 색깔(color), 마커(marker), 선 종류(line style)의 순서로 지정한다. 
 plt.plot(sr_one, marker='o', markersize=10) # 마커 표시
 
 # x축 눈금 라벨 회전하기
