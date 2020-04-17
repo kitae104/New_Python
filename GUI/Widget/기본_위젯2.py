@@ -1,9 +1,9 @@
 #=======================================================
-# 콤보박스
+# 기본 위젯 2
 #=======================================================
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget, QVBoxLayout
-from PyQt5.QtWidgets import QComboBox, QLabel
+from PyQt5.QtWidgets import QComboBox, QLabel, QLineEdit
 from PyQt5.QtGui import QIcon
 
 class MyApp(QWidget):
@@ -29,16 +29,25 @@ class MyApp(QWidget):
     # ================================
     def initUI(self):
 
+        # 라벨, 에디트
+        self.lblStr = QLabel(self)
+        self.lblStr.move(160, 40)
+
+        lineEdit = QLineEdit(self)
+        lineEdit.move(160, 100)
+        lineEdit.textChanged[str].connect(self.onChanged)   # 텍스트가 바뀌면 onChanged 호출
+
+
         # 라벨, 콤보
         self.lbl = QLabel("선택 내용", self)
-        self.lbl.move(50, 150)
+        self.lbl.move(50, 100)
 
         comb = QComboBox(self)
         comb.addItem("선택1")
         comb.addItem("선택2")
         comb.addItem("선택3")
         comb.addItem("선택4")
-        comb.move(50, 50)
+        comb.move(50, 40)
 
         # 선택했을 때 함수 호출
         comb.activated[str].connect(self.onActivated)
@@ -49,9 +58,15 @@ class MyApp(QWidget):
         self.center()
         self.show()                                       # 보이기
 
+    # 콤보박스에서 선택 시
     def onActivated(self, text):
         self.lbl.setText(text)
         self.lbl.adjustSize()       # 라벨의 크기 조절
+
+    # 라인에디터에서 글자를 수정할 때
+    def onChanged(self, text):
+        self.lblStr.setText(text)
+        self.lblStr.adjustSize()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
