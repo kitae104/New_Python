@@ -1,11 +1,11 @@
 #=======================================================
-# 탭 패널 위젯 + 픽스 맵 위젯
+# 달력 위젯
 #=======================================================
 import sys
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget, QVBoxLayout, QTabWidget, QLabel
-from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import Qt, QDate
+from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget, QVBoxLayout, QCalendarWidget, QLabel
+from PyQt5.QtGui import QIcon
 
 
 class MyApp(QWidget):
@@ -31,45 +31,31 @@ class MyApp(QWidget):
     # ================================
     def initUI(self):
 
-        # 탭 추가
-        tab1 = QWidget()
-        tab1.setLayout(self.setImageLayout('../../Utils/Images/korea_mask.jpg'))
+        # 달력
+        cal = QCalendarWidget(self)
+        cal.setGridVisible(True)
+        # 날짜를 클릭했을 때 showDate 메서드가 호출
+        cal.clicked[QDate].connect(self.showDate)
 
-        tab2 = QWidget()
-        tab2.setLayout(self.setImageLayout('../../Utils/Images/trump.jpg'))
-
-        tabs = QTabWidget()
-        tabs.addTab(tab1, "Tab1")
-        tabs.addTab(tab2, "Tab2")
+        self.lbl = QLabel(self)
+        date = cal.selectedDate()
+        self.lbl.setText(date.toString(Qt.DefaultLocaleLongDate))
 
         # 레이아웃 설정
         vBox = QVBoxLayout()
-        vBox.addWidget(tabs)
+        vBox.addWidget(cal)
+        vBox.addWidget(self.lbl)
 
         self.setLayout(vBox)
 
-        self.setWindowTitle("탭 패널 위젯")           # 타이틀
-        self.setWindowIcon(QIcon('../images/web.png'))  # 아이콘 추가
+        self.setWindowTitle("달력 위젯")           # 타이틀
+        self.setWindowIcon(QIcon('../../Utils/Images/web.png'))  # 아이콘 추가
         self.resize(500, 350)                             # 크기 설정
         self.center()
         self.show()                                       # 보이기
 
-    def setImageLayout(self, path):
-        # 픽스 맵
-        pixmap = QPixmap(path)
-
-        lbl_img = QLabel()
-        lbl_img.setPixmap(pixmap)
-        lbl_size = QLabel('Width: ' + str(pixmap.width()) + ", Height: " + str(pixmap.height()))
-        lbl_size.setAlignment(Qt.AlignCenter)
-
-        # 레이아웃 설정
-        vBox = QVBoxLayout()
-        vBox.addWidget(lbl_img)
-        vBox.addWidget(lbl_size)
-
-        return vBox
-
+    def showDate(self, date):
+        self.lbl.setText(date.toString(Qt.DefaultLocaleLongDate))
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

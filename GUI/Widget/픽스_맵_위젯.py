@@ -1,5 +1,5 @@
 #=======================================================
-# 탭 패널 위젯 + 픽스 맵 위젯
+# 픽스 맵 위젯
 #=======================================================
 import sys
 
@@ -31,32 +31,8 @@ class MyApp(QWidget):
     # ================================
     def initUI(self):
 
-        # 탭 추가
-        tab1 = QWidget()
-        tab1.setLayout(self.setImageLayout('../../Utils/Images/korea_mask.jpg'))
-
-        tab2 = QWidget()
-        tab2.setLayout(self.setImageLayout('../../Utils/Images/trump.jpg'))
-
-        tabs = QTabWidget()
-        tabs.addTab(tab1, "Tab1")
-        tabs.addTab(tab2, "Tab2")
-
-        # 레이아웃 설정
-        vBox = QVBoxLayout()
-        vBox.addWidget(tabs)
-
-        self.setLayout(vBox)
-
-        self.setWindowTitle("탭 패널 위젯")           # 타이틀
-        self.setWindowIcon(QIcon('../images/web.png'))  # 아이콘 추가
-        self.resize(500, 350)                             # 크기 설정
-        self.center()
-        self.show()                                       # 보이기
-
-    def setImageLayout(self, path):
         # 픽스 맵
-        pixmap = QPixmap(path)
+        pixmap = QPixmap('../../Utils/Images/korea_mask.jpg')
 
         lbl_img = QLabel()
         lbl_img.setPixmap(pixmap)
@@ -68,8 +44,13 @@ class MyApp(QWidget):
         vBox.addWidget(lbl_img)
         vBox.addWidget(lbl_size)
 
-        return vBox
+        self.setLayout(vBox)
 
+        self.setWindowTitle("픽스 맵 위젯")           # 타이틀
+        self.setWindowIcon(QIcon('../../Utils/Images/web.png'))  # 아이콘 추가
+        self.resize(500, 350)                             # 크기 설정
+        self.center()
+        self.show()                                       # 보이기
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
