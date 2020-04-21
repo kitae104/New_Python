@@ -65,9 +65,11 @@ class Form(QWidget):
         self.view.setModel(self.model)
         self.split.addWidget(self.view)
         self.split.addWidget(self.te_2)
-        self.split.setSizes([20, 180])
+        self.split.setSizes([20, 180])      # 분할 크기 정하기
+
         self.vbox.addWidget(self.split)
         self.setLayout(self.vbox)
+
         self.setWindowTitle("RPA")
         self.setWindowIcon(QIcon('../../Utils/Images/menu_icon/web.png'))  # 아이콘 추가
         self.resize(500, 350)  # 크기와 위치 설정
