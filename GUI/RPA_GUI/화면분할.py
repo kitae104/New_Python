@@ -5,8 +5,18 @@ import sys
 
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QDesktopWidget, QTextEdit, QTreeView, QAbstractItemView
-from PyQt5.QtWidgets import QSplitter
+from PyQt5.QtWidgets import QSplitter, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
+
+# 테이블 데이터
+kospi_top5 = {
+    'code': ['005930', '015760', '005380', '090430', '012330'],
+    'name': ['삼성전자', '한국전력', '현대차', '아모레퍼시픽', '현대모비스'],
+    'cprice': ['1,269,000', '60,100', '132,000', '414,500', '243,500']
+}
+
+column_idx_lookup = {'code': 0, 'name': 1, 'cprice': 2}
+
 
 class Model(QStandardItemModel):
     def __init__(self, data):
@@ -29,7 +39,7 @@ class Form(QWidget):
     def __init__(self):
         QWidget.__init__(self, flags=Qt.Widget)
 
-        # 데이터
+        # 트리 데이터
         data = [
             {"type": "Window", "objects": ["Win_Item1", "Win_Item2"]},
             {"type": "Web", "objects": ["Web_Item1", "Web_Item2"]},
@@ -38,12 +48,36 @@ class Form(QWidget):
 
         self.view = QTreeView(self)
         self.model = Model(data)
-        self.te_2 = QTextEdit()
+        self.table = QTableWidget(self)
+        self.table.setRowCount(5)
+        self.table.setColumnCount(3)
+        self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)    # 수정 불가
+        self.setTableData()
 
         self.split = QSplitter()
         self.vbox = QVBoxLayout()
 
         self.init_widget()
+
+    # =================================
+    # 테이블에 데이터 입력하기 
+    # =================================
+    def setTableData(self):
+        column_headers = ['종목코드', '종목명', '종가']
+        self.table.setHorizontalHeaderLabels(column_headers)
+
+        for k, v in kospi_top5.items():
+            col = column_idx_lookup[k]
+
+            for row, val in enumerate(v):
+                item = QTableWidgetItem(val)
+                if col == 2:
+                    item.setTextAlignment(Qt.AlignHCenter | Qt.AlignRight)
+
+                self.table.setItem(row, col, item)
+
+        self.table.resizeColumnsToContents()
+        self.table.resizeRowsToContents()
 
     #=================================
     # 윈도우를 화면 가운데 위치 시키기
@@ -64,7 +98,7 @@ class Form(QWidget):
 
         self.view.setModel(self.model)
         self.split.addWidget(self.view)
-        self.split.addWidget(self.te_2)
+        self.split.addWidget(self.table)
         self.split.setSizes([20, 180])      # 분할 크기 정하기
 
         self.vbox.addWidget(self.split)
