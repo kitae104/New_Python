@@ -15,11 +15,18 @@ kospi_top5 = {
     'cprice': ['1,269,000', '60,100', '132,000', '414,500', '243,500']
 }
 
+# 컬럼 인덱스 관리
 column_idx_lookup = {'code': 0, 'name': 1, 'cprice': 2}
 
+# 트리 데이터
+data = [
+    {"type": "Window", "objects": ["Win_Item1", "Win_Item2"]},
+    {"type": "Web", "objects": ["Web_Item1", "Web_Item2"]},
+    {"type": "Test", "objects": ["TEst_Item1", "Test_Item2"]}
+]
 
 class Model(QStandardItemModel):
-    def __init__(self, data):
+    def __init__(self):
         QStandardItemModel.__init__(self)
 
         # for 문을 이용해서 작성했을 경우
@@ -29,7 +36,7 @@ class Model(QStandardItemModel):
                 child = QStandardItem(obj)
                 item.appendRow(child)
             self.setItem(j, 0, item)
-
+        self.setHorizontalHeaderLabels(['Activity'])
 
 class Form(QWidget):
 
@@ -39,15 +46,8 @@ class Form(QWidget):
     def __init__(self):
         QWidget.__init__(self, flags=Qt.Widget)
 
-        # 트리 데이터
-        data = [
-            {"type": "Window", "objects": ["Win_Item1", "Win_Item2"]},
-            {"type": "Web", "objects": ["Web_Item1", "Web_Item2"]},
-            {"type": "Test", "objects": ["TEst_Item1", "Test_Item2"]}
-        ]
-
         self.view = QTreeView(self)
-        self.model = Model(data)
+        self.model = Model()
         self.table = QTableWidget(self)
         self.table.setRowCount(5)
         self.table.setColumnCount(3)
