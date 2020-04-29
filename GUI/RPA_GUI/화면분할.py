@@ -4,7 +4,8 @@
 import sys
 
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QDesktopWidget, QTextEdit, QTreeView, QAbstractItemView
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QDesktopWidget, QTextEdit, QTreeView, QAbstractItemView, \
+    QMessageBox
 from PyQt5.QtWidgets import QSplitter, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
 
@@ -48,6 +49,9 @@ class Form(QWidget):
 
         self.view = QTreeView(self)
         self.model = Model()
+        self.view.setEditTriggers(QAbstractItemView.NoEditTriggers)  # 수정 불가
+        self.view.doubleClicked.connect(self.treeMedia_doubleClicked)
+
         self.table = QTableWidget(self)
         self.table.setRowCount(5)
         self.table.setColumnCount(3)
@@ -94,7 +98,7 @@ class Form(QWidget):
     def init_widget(self):
 
         # QTreeView 생성 및 설정
-        self.view.setEditTriggers(QAbstractItemView.DoubleClicked)
+        #self.view.setEditTriggers(QAbstractItemView.DoubleClicked)
 
         self.view.setModel(self.model)
         self.split.addWidget(self.view)
@@ -108,6 +112,20 @@ class Form(QWidget):
         self.setWindowIcon(QIcon('../../Utils/Images/menu_icon/web.png'))  # 아이콘 추가
         self.resize(500, 350)  # 크기와 위치 설정
         self.center()  # 화면 가운데 위치시키기
+
+    # ========================================================
+    #  선택 내용에 따라 수행하기
+    # ========================================================
+    def treeMedia_doubleClicked(self,index):
+        item = self.view.selectedIndexes()[0]
+        activity = item.model().itemFromIndex(index).text()
+
+        if activity == 'Win_Item1':
+            QMessageBox.information(self, "메뉴1", "Win_Item1  ");
+
+        elif activity == 'Win_Item2':
+            QMessageBox.information(self, "메뉴2", "Win_Item2  ");
+
 
 # ============================================
 # 메인 프로그램 시작하는 부분
