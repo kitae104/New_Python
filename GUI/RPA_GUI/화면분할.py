@@ -5,7 +5,7 @@ import sys
 
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QDesktopWidget, QTextEdit, QTreeView, QAbstractItemView, \
-    QMessageBox
+    QMessageBox, QInputDialog
 from PyQt5.QtWidgets import QSplitter, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt
 
@@ -21,8 +21,8 @@ column_idx_lookup = {'code': 0, 'name': 1, 'cprice': 2}
 
 # 트리 데이터
 data = [
-    {"type": "Window", "objects": ["Win_Item1", "Win_Item2"]},
-    {"type": "Web", "objects": ["Web_Item1", "Web_Item2"]},
+    {"type": "Web", "objects": ["Open Browser", "Win_Item2"]},
+    {"type": "DeskTop", "objects": ["Web_Item1", "Web_Item2"]},
     {"type": "Test", "objects": ["TEst_Item1", "Test_Item2"]}
 ]
 
@@ -53,7 +53,7 @@ class Form(QWidget):
         self.view.doubleClicked.connect(self.treeMedia_doubleClicked)
 
         self.table = QTableWidget(self)
-        self.table.setRowCount(5)
+        self.table.setRowCount(0)
         self.table.setColumnCount(3)
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)    # 수정 불가
         self.setTableData()
@@ -67,8 +67,11 @@ class Form(QWidget):
     # 테이블에 데이터 입력하기 
     # =================================
     def setTableData(self):
-        column_headers = ['종목코드', '종목명', '종가']
+        column_headers = ['    엑티비티    ', '               동작              ', '       속성       ']
         self.table.setHorizontalHeaderLabels(column_headers)
+        self.table.setColumnWidth(0, 50)
+        self.table.setColumnWidth(1, 100)
+        self.table.setColumnWidth(2, 50)
 
         for k, v in kospi_top5.items():
             col = column_idx_lookup[k]
@@ -120,11 +123,28 @@ class Form(QWidget):
         item = self.view.selectedIndexes()[0]
         activity = item.model().itemFromIndex(index).text()
 
-        if activity == 'Win_Item1':
-            QMessageBox.information(self, "메뉴1", "Win_Item1  ");
+        if activity == 'Open Browser':
+            self.open_browser()
 
         elif activity == 'Win_Item2':
             QMessageBox.information(self, "메뉴2", "Win_Item2  ");
+            self.add_table_row()
+
+    def open_browser(self):
+        url, ok = QInputDialog.getText(self, 'Open Browser', '이동할 URL :')
+        # self.add_table_row()
+        row_cnt = self.table.rowCount()
+        self.table.setRowCount(row_cnt + 1)
+        self.table.setItem(row_cnt, 0, QTableWidgetItem("AAA"))
+        self.table.setItem(row_cnt, 1, QTableWidgetItem(url))
+        self.table.setItem(row_cnt, 2, QTableWidgetItem("CCC"))
+
+    # ========================================================
+    #  선택 내용에 따라 수행하기
+    # ========================================================
+    def add_table_row(self):
+        row_cnt = self.table.rowCount()
+        self.table.setRowCount(row_cnt + 1)
 
 
 # ============================================
