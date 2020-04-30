@@ -4,16 +4,20 @@
 import sys
 
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QDesktopWidget, QTextEdit, QTreeView, QAbstractItemView, \
-    QMessageBox, QInputDialog, QAction, qApp, QToolBar, QMainWindow, QPushButton, QDockWidget
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QDesktopWidget, QTextEdit, \
+    QTreeView, QAbstractItemView, QMessageBox, QInputDialog, QAction, qApp, QToolBar, QMainWindow, \
+    QPushButton, QDockWidget
 from PyQt5.QtWidgets import QSplitter, QTableWidget, QTableWidgetItem
 from PyQt5.QtCore import Qt, QDateTime
 
+from selenium import webdriver
+import time
+
 # 테이블 데이터
 kospi_top5 = {
-    'code': ['005930', '015760', '005380', '090430', '012330'],
-    'name': ['삼성전자', '한국전력', '현대차', '아모레퍼시픽', '현대모비스'],
-    'cprice': ['1,269,000', '60,100', '132,000', '414,500', '243,500']
+    'code': [],
+    'name': [],
+    'cprice': ['']
 }
 
 # 컬럼 인덱스 관리
@@ -21,7 +25,7 @@ column_idx_lookup = {'code': 0, 'name': 1, 'cprice': 2}
 
 # 트리 데이터
 data = [
-    {"type": "Web", "objects": ["Open Browser", "Win_Item2"]},
+    {"type": "Web", "objects": ["Open Browser", "Set Text", "Click Item"]},
     {"type": "DeskTop", "objects": ["Web_Item1", "Web_Item2"]},
     {"type": "Test", "objects": ["TEst_Item1", "Test_Item2"]}
 ]
@@ -48,9 +52,6 @@ class Form(QMainWindow):
         super().__init__()
         self.date = QDateTime.currentDateTime()  # 현재 날짜 시간 정보
         self.initUI()  # 기본 UI 초기화
-
-
-
 
     def make_tree_table(self):
         self.view = QTreeView(self)
@@ -110,6 +111,9 @@ class Form(QMainWindow):
         fileMenu.addAction(self.exitActionFunc())
 
         # 툴바 생성
+        self.toolBar = self.addToolBar('Run')
+        self.toolBar.addAction(self.runActionFunc())
+
         self.toolBar = self.addToolBar('Exit')
         self.toolBar.addAction(self.exitActionFunc())
 
@@ -134,7 +138,7 @@ class Form(QMainWindow):
         self.addDockWidget(Qt.RightDockWidgetArea, dockWidget2)
 
         # 시작 크기 지정하기
-        self.resizeDocks({dockWidget1, dockWidget2}, {150, 530}, Qt.Horizontal)
+        self.resizeDocks({dockWidget1, dockWidget2}, {180, 630}, Qt.Horizontal)
 
 
         self.setWindowTitle("파이썬_RPA")
@@ -142,6 +146,20 @@ class Form(QMainWindow):
         self.resize(800, 550)  # 크기와 위치 설정
         self.center()  # 화면 가운데 위치시키기
 
+    # ========================================================
+    # run 엑션 설정
+    # ========================================================
+    def runActionFunc(self):
+        runAction = QAction(QIcon('../../Utils/Images/menu_icon/run.png'), 'Run', self)
+        runAction.setShortcut('Ctrl+R')
+        runAction.setStatusTip('Run RPA Application')  # 상태바에 출력할 정보
+        runAction.triggered.connect(self.scrip_run)  # 생성된 시그널을 위젯의 quit 메소드에 연결
+        return runAction
+
+
+    # ========================================================
+    #  exit 엑션 설정
+    # ========================================================
     def exitActionFunc(self):
         exitAction = QAction(QIcon('../images/exit.png'), 'Exit', self)
         exitAction.setShortcut('Ctrl+Q')
@@ -159,18 +177,39 @@ class Form(QMainWindow):
         if activity == 'Open Browser':
             self.open_browser()
 
-        elif activity == 'Win_Item2':
-            QMessageBox.information(self, "메뉴2", "Win_Item2  ");
-            self.add_table_row()
+        elif activity == 'Set Text':
+            self.set_text()
+
+        elif activity == 'Click Item':
+            self.click_item()
 
     def open_browser(self):
         url, ok = QInputDialog.getText(self, 'Open Browser', '이동할 URL :')
         # self.add_table_row()
         row_cnt = self.table.rowCount()
         self.table.setRowCount(row_cnt + 1)
-        self.table.setItem(row_cnt, 0, QTableWidgetItem("AAA"))
+        self.table.setItem(row_cnt, 0, QTableWidgetItem("Open_Browser"))
         self.table.setItem(row_cnt, 1, QTableWidgetItem(url))
-        self.table.setItem(row_cnt, 2, QTableWidgetItem("CCC"))
+        self.table.setItem(row_cnt, 2, QTableWidgetItem(""))
+
+    def set_text(self):
+        selector, ok = QInputDialog.getText(self, 'Set Text', '셀렉터 선택 :')
+        msg, ok = QInputDialog.getText(self, 'Set Text', 'Text 입력 :')
+        
+        row_cnt = self.table.rowCount()
+        self.table.setRowCount(row_cnt + 1)
+        self.table.setItem(row_cnt, 0, QTableWidgetItem("Set_Text"))
+        self.table.setItem(row_cnt, 1, QTableWidgetItem(selector))
+        self.table.setItem(row_cnt, 2, QTableWidgetItem(msg))
+
+    def click_item(self):
+        selector, ok = QInputDialog.getText(self, 'Set Text', '셀렉터 선택 :')
+
+        row_cnt = self.table.rowCount()
+        self.table.setRowCount(row_cnt + 1)
+        self.table.setItem(row_cnt, 0, QTableWidgetItem("Click_Item"))
+        self.table.setItem(row_cnt, 1, QTableWidgetItem(selector))
+        self.table.setItem(row_cnt, 2, QTableWidgetItem(""))
 
     # ========================================================
     #  선택 내용에 따라 수행하기
@@ -178,6 +217,35 @@ class Form(QMainWindow):
     def add_table_row(self):
         row_cnt = self.table.rowCount()
         self.table.setRowCount(row_cnt + 1)
+
+    # ========================================================
+    #  실제 스크립트를 수행하는 부분
+    # ========================================================
+    def scrip_run(self):
+        rowCnt = self.table.model().rowCount()
+        for i in range(rowCnt):
+            kind = self.table.item(i,0).text()
+            if kind == "Open_Browser":
+                self.openBrowser(self.table.item(i,1).text())
+            elif kind == "Set_Text":
+                self.setText(self.table.item(i,1).text(), self.table.item(i,2).text())
+            elif kind == "Click_Item":
+                self.clickItem(self.table.item(i,1).text())
+
+    # ========================================================
+    #  기능 구현 부분
+    # ========================================================
+    def openBrowser(self, input_url):
+        self.driver = webdriver.Chrome()  # 크롬 드라이버 초기화
+        url = str(input_url)
+        self.driver.get(url)
+
+    def setText(self, selector, msg):
+        self.driver.find_element_by_css_selector(str(selector)).click()
+        self.driver.find_element_by_css_selector(str(selector)).send_keys(str(msg))
+
+    def clickItem(self, selector):
+        self.driver.find_element_by_css_selector(str(selector)).click()
 
 
 # ============================================
