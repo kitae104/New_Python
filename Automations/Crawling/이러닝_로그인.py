@@ -23,11 +23,11 @@ time.sleep(1)
 
 # 아이디 처리하기
 driver.find_element_by_css_selector("#id").click()
-driver.find_element_by_css_selector("#id").send_keys('2019010')
+driver.find_element_by_css_selector("#id").send_keys('11111')
 
 # 패스워드 처리하기
 driver.find_element_by_css_selector("#pw").click()
-driver.find_element_by_css_selector("#pw").send_keys('aqua0405@')
+driver.find_element_by_css_selector("#pw").send_keys('11111')
 
 time.sleep(1)
 # 버튼 클릭
