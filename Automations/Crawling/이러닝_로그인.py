@@ -11,7 +11,7 @@ url = 'https://cyber.inhatc.ac.kr/Main.do?cmd=viewHome&userDTO.localeKey=ko'
 
 # 웹브라우저 불러오고 최대 크기로 만들기
 driver.get(url)
-#driver.maximize_window()
+driver.maximize_window()
 
 print(driver.window_handles)
 driver.switch_to.window(driver.window_handles[1])
@@ -23,11 +23,11 @@ time.sleep(1)
 
 # 아이디 처리하기
 driver.find_element_by_css_selector("#id").click()
-driver.find_element_by_css_selector("#id").send_keys('11111')
+driver.find_element_by_css_selector("#id").send_keys('2019010')
 
 # 패스워드 처리하기
 driver.find_element_by_css_selector("#pw").click()
-driver.find_element_by_css_selector("#pw").send_keys('11111')
+driver.find_element_by_css_selector("#pw").send_keys('aqua0405@')
 
 time.sleep(1)
 # 버튼 클릭
