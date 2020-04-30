@@ -5,9 +5,9 @@ import sys
 
 from PyQt5.QtGui import QIcon, QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QDesktopWidget, QTextEdit, QTreeView, QAbstractItemView, \
-    QMessageBox, QInputDialog, QAction, qApp, QToolBar
+    QMessageBox, QInputDialog, QAction, qApp, QToolBar, QMainWindow, QPushButton, QDockWidget
 from PyQt5.QtWidgets import QSplitter, QTableWidget, QTableWidgetItem
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QDateTime
 
 # 테이블 데이터
 kospi_top5 = {
@@ -39,16 +39,18 @@ class Model(QStandardItemModel):
             self.setItem(j, 0, item)
         self.setHorizontalHeaderLabels(['Activity'])
 
-class Form(QWidget):
+class Form(QMainWindow):
 
     #========================================================
     #  생성자에서 필요한 것들을 다를 위젯들을 선언
     #========================================================
     def __init__(self):
-        QWidget.__init__(self, flags=Qt.Widget)
+        super().__init__()
+        self.date = QDateTime.currentDateTime()  # 현재 날짜 시간 정보
+        self.initUI()  # 기본 UI 초기화
 
 
-        self.init_widget()
+
 
     def make_tree_table(self):
         self.view = QTreeView(self)
@@ -61,7 +63,6 @@ class Form(QWidget):
         self.table.setEditTriggers(QAbstractItemView.NoEditTriggers)  # 수정 불가
         self.setTableData()
         self.split = QSplitter()
-        self.vbox = QVBoxLayout()
 
     # =================================
     # 테이블에 데이터 입력하기 
@@ -98,40 +99,55 @@ class Form(QWidget):
     # ========================================================
     #  현재 위젯의 모양들을 초기화
     # ========================================================
-    def init_widget(self):
+    def initUI(self):
+
+        # 메뉴 바 생성
+        menubar = self.menuBar()
+        menubar.setNativeMenuBar(False)
+
+        # 메뉴 생성
+        fileMenu = menubar.addMenu('&File')
+        fileMenu.addAction(self.exitActionFunc())
+
+        # 툴바 생성
+        self.toolBar = self.addToolBar('Exit')
+        self.toolBar.addAction(self.exitActionFunc())
+
+        # 상태바 추가 - 현재 날짜 추가
+        self.statusBar().showMessage(self.date.toString(Qt.DefaultLocaleLongDate))
+
         self.make_tree_table()
 
         # QTreeView 생성 및 설정
         #self.view.setEditTriggers(QAbstractItemView.DoubleClicked)
 
         self.view.setModel(self.model)
-        self.split.addWidget(self.view)
-        self.split.addWidget(self.table)
-        self.split.setSizes([20, 180])      # 분할 크기 정하기
 
-        self.vbox.addWidget(self.split)
-        self.setLayout(self.vbox)
+        dockWidget1 = QDockWidget('Activity', self)
+        dockWidget1.setWidget(self.view)
+        dockWidget1.setFloating(False)
+        dockWidget2 = QDockWidget('스크립트', self)
+        dockWidget2.setWidget(self.table)
+        dockWidget2.setFloating(False)
+        # self.setCentralWidget(self.table)
+        self.addDockWidget(Qt.LeftDockWidgetArea, dockWidget1)
+        self.addDockWidget(Qt.RightDockWidgetArea, dockWidget2)
 
-        # 툴바 생성
-        self.toolBar = QToolBar()
-        self.toolBar.setOrientation(Qt.Vertical)
-        # self.toolBar.addAction(self.exitActionFunc())
+        # 시작 크기 지정하기
+        self.resizeDocks({dockWidget1, dockWidget2}, {150, 530}, Qt.Horizontal)
 
 
-        # 상태바 추가 - 현재 날짜 추가
-        #self.statusBar().showMessage(self.date.toString(Qt.DefaultLocaleLongDate))
-
-        self.setWindowTitle("RPA")
+        self.setWindowTitle("파이썬_RPA")
         self.setWindowIcon(QIcon('../../Utils/Images/menu_icon/web.png'))  # 아이콘 추가
-        self.resize(500, 350)  # 크기와 위치 설정
+        self.resize(800, 550)  # 크기와 위치 설정
         self.center()  # 화면 가운데 위치시키기
 
-    # def exitActionFunc(self):
-    #     exitAction = QAction(QIcon('../images/exit.png'), 'Exit', self)
-    #     exitAction.setShortcut('Ctrl+Q')
-    #     exitAction.setStatusTip('Exit Application')  # 상태바에 출력할 정보
-    #     exitAction.triggered.connect(qApp.quit)  # 생성된 시그널을 위젯의 quit 메소드에 연결
-    #     return exitAction
+    def exitActionFunc(self):
+        exitAction = QAction(QIcon('../images/exit.png'), 'Exit', self)
+        exitAction.setShortcut('Ctrl+Q')
+        exitAction.setStatusTip('Exit Application')  # 상태바에 출력할 정보
+        exitAction.triggered.connect(qApp.quit)  # 생성된 시그널을 위젯의 quit 메소드에 연결
+        return exitAction
 
     # ========================================================
     #  선택 내용에 따라 수행하기
