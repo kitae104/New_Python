@@ -1,4 +1,3 @@
 import tensorflow as tf 
-import keras
 
-print(keras.__version__)
+print(tf.__version__)
