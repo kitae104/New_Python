@@ -6,12 +6,23 @@
   <title>Details</title>
 </head>
 <body>
+  <!-- 제목 -->
   <h1>{{question.question_text}}</h1>
-  <ul>
-    <!-- 선택에 있는 모든 내용 가져오기 -->
+
+  <!-- 에러가 있는 경우 -->
+  {% if error_message %}
+  <p>
+    <strong>{{ error_message }}</strong>
+  </p>
+  {% endif %}
+
+  <form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}  <!-- 보안 토큰 처리 -->
     {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
+      <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
+      <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
     {% endfor %}
-  </ul>
+      <input type="submit" value="Vote">
+  </form>
 </body>
 </html>
