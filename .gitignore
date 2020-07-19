@@ -242,3 +242,7 @@ cython_debug/
 .idea/shelf/Uncommitted_changes_before_Update_at_2020-05-11_오후_10_26_\[NoChange\]/vtest.avi
 Keras/기본 개념/graph/
 Keras/기본 개념/logs/
+Keras/레이어/preview/
+Keras/레이어/test/
+Keras/레이어/train/circle/circle001.png
+Keras/레이어/train/
