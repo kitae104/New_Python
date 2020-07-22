@@ -1,0 +1,1606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1478</width>
+    <height>1184</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Automatic Bot Creation</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>toys.png</normaloff>toys.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="2">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="pushButton_NEW">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>NEW.png</normaloff>NEW.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_Open">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>열기.png</normaloff>열기.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_Save">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>저장.png</normaloff>저장.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_Run">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>Go.png</normaloff>Go.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_Stop">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>Stop.png</normaloff>Stop.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_Item">
+          <property name="font">
+           <font>
+            <family>12롯데마트행복Bold</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>사용자 정의 함수</string>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>fx.png</normaloff>fx.png</iconset>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_Logo">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>toys.png</normaloff>toys.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>64</width>
+            <height>64</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="4">
+             <widget class="QLineEdit" name="SearchBox">
+              <property name="font">
+               <font>
+                <family>12롯데마트행복Medium</family>
+               </font>
+              </property>
+              <property name="statusTip">
+               <string/>
+              </property>
+              <property name="inputMask">
+               <string/>
+              </property>
+              <property name="clearButtonEnabled">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="label">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>1</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>15</width>
+                <height>15</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>ArrowCursor</cursorShape>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::NoFrame</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap>검색.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+              <property name="indent">
+               <number>0</number>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>10</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTreeWidget" name="ActivityBox">
+            <property name="font">
+             <font>
+              <family>12롯데마트행복Light</family>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(0, 0, 0, 0);
+background-color: rgb(255, 231, 231);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="dragEnabled">
+             <bool>true</bool>
+            </property>
+            <property name="dragDropMode">
+             <enum>QAbstractItemView::DragOnly</enum>
+            </property>
+            <property name="autoExpandDelay">
+             <number>-1</number>
+            </property>
+            <property name="itemsExpandable">
+             <bool>true</bool>
+            </property>
+            <property name="sortingEnabled">
+             <bool>false</bool>
+            </property>
+            <property name="allColumnsShowFocus">
+             <bool>false</bool>
+            </property>
+            <property name="headerHidden">
+             <bool>false</bool>
+            </property>
+            <property name="expandsOnDoubleClick">
+             <bool>false</bool>
+            </property>
+            <attribute name="headerDefaultSectionSize">
+             <number>220</number>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>행동</string>
+             </property>
+             <property name="font">
+              <font>
+               <family>12롯데마트행복Medium</family>
+              </font>
+             </property>
+             <property name="background">
+              <color alpha="0">
+               <red>0</red>
+               <green>0</green>
+               <blue>0</blue>
+              </color>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>변수</string>
+             </property>
+             <property name="font">
+              <font>
+               <family>12롯데마트행복Medium</family>
+              </font>
+             </property>
+            </column>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>브라우저</string>
+             </property>
+             <property name="font">
+              <font>
+               <underline>false</underline>
+              </font>
+             </property>
+             <item>
+              <property name="text">
+               <string>브라우저 열기</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>openbrowser.png</normaloff>openbrowser.png</iconset>
+              </property>
+              <property name="text">
+               <string>URL</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>브라우저 닫기</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>closebrowser.png</normaloff>closebrowser.png</iconset>
+              </property>
+              <property name="text">
+               <string>none</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>팝업창 닫기</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>closepopup.png</normaloff>closepopup.png</iconset>
+              </property>
+              <property name="text">
+               <string>none</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>페이지 스크린샷</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>screenshot.png</normaloff>screenshot.png</iconset>
+              </property>
+              <property name="text">
+               <string>none</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>딜레이</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>delay.png</normaloff>delay.png</iconset>
+              </property>
+              <property name="text">
+               <string>time</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Click</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>id값으로 클릭</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>click.png</normaloff>click.png</iconset>
+               </property>
+               <property name="text">
+                <string>id</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>class값으로 클릭</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>click.png</normaloff>click.png</iconset>
+               </property>
+               <property name="text">
+                <string>class_name</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>css값으로 클릭</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>click.png</normaloff>click.png</iconset>
+               </property>
+               <property name="text">
+                <string>css</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>xpath값으로 클릭</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>click.png</normaloff>click.png</iconset>
+               </property>
+               <property name="text">
+                <string>xpath</string>
+               </property>
+              </item>
+             </item>
+             <item>
+              <property name="text">
+               <string>Send_key</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>id값으로 입력</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>keyboard.png</normaloff>keyboard.png</iconset>
+               </property>
+               <property name="text">
+                <string>id, key</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>class값으로 입력</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>keyboard.png</normaloff>keyboard.png</iconset>
+               </property>
+               <property name="text">
+                <string>class, key</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>css값으로 입력</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>keyboard.png</normaloff>keyboard.png</iconset>
+               </property>
+               <property name="text">
+                <string>css, key</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>xpath값으로 입력</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>keyboard.png</normaloff>keyboard.png</iconset>
+               </property>
+               <property name="text">
+                <string>xpath, key</string>
+               </property>
+              </item>
+             </item>
+             <item>
+              <property name="text">
+               <string>WebCrawling</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>text 크롤링</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>crawling.png</normaloff>crawling.png</iconset>
+               </property>
+               <property name="text">
+                <string>class_name</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>url 크롤링</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>crawling.png</normaloff>crawling.png</iconset>
+               </property>
+               <property name="text">
+                <string>class_name, company_class</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>url 여러 페이지 크롤링</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>crawling.png</normaloff>crawling.png</iconset>
+               </property>
+               <property name="text">
+                <string>class_name, company_class, count</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>데이터로 크롤링</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>crawling.png</normaloff>crawling.png</iconset>
+               </property>
+               <property name="text">
+                <string>none</string>
+               </property>
+              </item>
+             </item>
+            </item>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>이미지</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>이미지 다운로드(src)</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>photo.png</normaloff>photo.png</iconset>
+              </property>
+              <property name="text">
+               <string>src</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>이미지 클릭</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>click.png</normaloff>click.png</iconset>
+              </property>
+              <property name="text">
+               <string>filename</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>좌표 클릭</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>click.png</normaloff>click.png</iconset>
+              </property>
+              <property name="text">
+               <string>X, Y</string>
+              </property>
+             </item>
+            </item>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>문서</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>Txt</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>텍스트 파일 읽기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>txt.png</normaloff>txt.png</iconset>
+               </property>
+               <property name="text">
+                <string>filename</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>텍스트 파일 쓰기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>txt.png</normaloff>txt.png</iconset>
+               </property>
+               <property name="text">
+                <string>text</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>텍스트 추가</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>txt.png</normaloff>txt.png</iconset>
+               </property>
+               <property name="text">
+                <string>filename, text</string>
+               </property>
+              </item>
+             </item>
+             <item>
+              <property name="text">
+               <string>Excel</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>텍스트 파일을 엑셀 파일로 변환</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>text</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>시트 불러오기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>filename</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>행 삭제</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>row</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>열 삭제</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>col</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>셀 옮기기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>cell, move</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>값 얻기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>cell</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>행 찾기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>col, text, totalcol</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>값 설정</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>xls.png</normaloff>xls.png</iconset>
+               </property>
+               <property name="text">
+                <string>cell, text</string>
+               </property>
+              </item>
+             </item>
+             <item>
+              <property name="text">
+               <string>Word</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>docx 읽기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icon (3).png</normaloff>icon (3).png</iconset>
+               </property>
+               <property name="text">
+                <string>filename</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>docx 작성</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icon (3).png</normaloff>icon (3).png</iconset>
+               </property>
+               <property name="text">
+                <string>style</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>head 쓰기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icon (3).png</normaloff>icon (3).png</iconset>
+               </property>
+               <property name="text">
+                <string>text, style</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>body 쓰기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icon (3).png</normaloff>icon (3).png</iconset>
+               </property>
+               <property name="text">
+                <string>text, style</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>docx 저장</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icon (3).png</normaloff>icon (3).png</iconset>
+               </property>
+               <property name="text">
+                <string>none</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>이미지 추가</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icon (3).png</normaloff>icon (3).png</iconset>
+               </property>
+               <property name="text">
+                <string>filename, style</string>
+               </property>
+              </item>
+             </item>
+             <item>
+              <property name="text">
+               <string>CSV</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>csv 읽기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>csv.png</normaloff>csv.png</iconset>
+               </property>
+               <property name="text">
+                <string>filename</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>csv 쓰기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>csv.png</normaloff>csv.png</iconset>
+               </property>
+               <property name="text">
+                <string>text</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>열 가져오기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>csv.png</normaloff>csv.png</iconset>
+               </property>
+               <property name="text">
+                <string>selectline</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>행 추가</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>csv.png</normaloff>csv.png</iconset>
+               </property>
+               <property name="text">
+                <string>text</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>csv파일 추가모드로 열기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>csv.png</normaloff>csv.png</iconset>
+               </property>
+               <property name="text">
+                <string>filename</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>모든 값 얻기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>csv.png</normaloff>csv.png</iconset>
+               </property>
+               <property name="text">
+                <string>none</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>파일 닫기</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>csv.png</normaloff>csv.png</iconset>
+               </property>
+               <property name="text">
+                <string>none</string>
+               </property>
+              </item>
+             </item>
+            </item>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>메일</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>Gmail 세션 생성</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>gmail.png</normaloff>gmail.png</iconset>
+              </property>
+              <property name="text">
+               <string>id, pw</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>파일첨부</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>attachment.png</normaloff>attachment.png</iconset>
+              </property>
+              <property name="text">
+               <string>filename</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>엑셀 읽어 보내기</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>send.png</normaloff>send.png</iconset>
+              </property>
+              <property name="text">
+               <string>filename</string>
+              </property>
+             </item>
+            </item>
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>기능</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>반복_For</string>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>loop.png</normaloff>loop.png</iconset>
+              </property>
+              <property name="text">
+               <string>startnum, endnum, roofnum</string>
+              </property>
+             </item>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QPushButton" name="pushButton_Up">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>위.png</normaloff>위.png</iconset>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_Down">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>아래.png</normaloff>아래.png</iconset>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_Delete">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>삭제.png</normaloff>삭제.png</iconset>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="MainBox">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="font">
+             <font>
+              <family>12롯데마트행복Light</family>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color:rgb(218,227,243);
+gridline-color: rgb(255, 255, 255);
+</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
+            <property name="dragEnabled">
+             <bool>true</bool>
+            </property>
+            <property name="dragDropOverwriteMode">
+             <bool>false</bool>
+            </property>
+            <property name="dragDropMode">
+             <enum>QAbstractItemView::NoDragDrop</enum>
+            </property>
+            <property name="defaultDropAction">
+             <enum>Qt::MoveAction</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="showGrid">
+             <bool>true</bool>
+            </property>
+            <property name="gridStyle">
+             <enum>Qt::DashLine</enum>
+            </property>
+            <attribute name="horizontalHeaderCascadingSectionResizes">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>200</number>
+            </attribute>
+            <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>행동</string>
+             </property>
+             <property name="whatsThis">
+              <string/>
+             </property>
+             <property name="font">
+              <font>
+               <family>12롯데마트행복Medium</family>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>변수</string>
+             </property>
+             <property name="font">
+              <font>
+               <family>12롯데마트행복Medium</family>
+              </font>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetFixedSize</enum>
+          </property>
+          <item>
+           <widget class="QTabWidget" name="tabWidget_2">
+            <property name="font">
+             <font>
+              <family>12롯데마트행복Light</family>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color:rgb(255,242,204);
+</string>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tab_var">
+             <attribute name="title">
+              <string>Property</string>
+             </attribute>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QTableWidget" name="varBox">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>12롯데마트행복Light</family>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(255,242,204);
+gridline-color: rgb(255, 255, 255);
+</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="autoScroll">
+                 <bool>true</bool>
+                </property>
+                <property name="showGrid">
+                 <bool>true</bool>
+                </property>
+                <property name="gridStyle">
+                 <enum>Qt::DashLine</enum>
+                </property>
+                <property name="sortingEnabled">
+                 <bool>false</bool>
+                </property>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>180</number>
+                </attribute>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>true</bool>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string notr="true">변수</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>12롯데마트행복Medium</family>
+                  </font>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>값</string>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>12롯데마트행복Medium</family>
+                  </font>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTabWidget" name="tabWidget">
+            <property name="font">
+             <font>
+              <family>12롯데마트행복Light</family>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string/>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="tab_excel">
+             <attribute name="title">
+              <string>엑셀</string>
+             </attribute>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <widget class="QTableWidget" name="excelBox">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(226,240,217);
+gridline-color: rgb(255, 255, 255);
+</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="dragDropOverwriteMode">
+                 <bool>false</bool>
+                </property>
+                <property name="showGrid">
+                 <bool>true</bool>
+                </property>
+                <property name="gridStyle">
+                 <enum>Qt::DashLine</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_img">
+             <attribute name="title">
+              <string>이미지</string>
+             </attribute>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QLabel" name="imgLabel">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(226,240,217);</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab">
+             <attribute name="title">
+              <string>코드</string>
+             </attribute>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QPlainTextEdit" name="plainTextEdit">
+                <property name="tabletTracking">
+                 <bool>false</bool>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color:rgb(226,240,217);</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>1</number>
+                </property>
+                <property name="backgroundVisible">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionopen">
+   <property name="text">
+    <string>open</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="검색.PNG"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton_Delete</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Delete()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>976</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>759</x>
+     <y>691</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Delete</sender>
+   <signal>clicked()</signal>
+   <receiver>MainBox</receiver>
+   <slot>reset()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>976</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>719</x>
+     <y>176</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Up</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Up()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>527</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>567</x>
+     <y>8</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>MainBox</sender>
+   <signal>itemClicked(QTableWidgetItem*)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>OnProperty()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>719</x>
+     <y>412</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1011</x>
+     <y>289</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_NEW</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>NewFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>86</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>91</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Stop</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Stop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>91</x>
+     <y>389</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Open</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>OpenFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>168</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>91</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SearchBox</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SearchActivity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>289</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>90</x>
+     <y>26</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Save</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>SaveFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>250</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>90</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Run</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Run()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>89</x>
+     <y>320</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ActivityBox</sender>
+   <signal>itemDoubleClicked(QTreeWidgetItem*,int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>AddItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>74</x>
+     <y>493</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Down</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Down()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>552</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>738</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Item</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>CreateMyItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>464</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>479</x>
+     <y>28</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_Logo</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>LogoClick()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1393</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1376</x>
+     <y>43</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>NewFile()</slot>
+  <slot>OpenFile()</slot>
+  <slot>SaveFile()</slot>
+  <slot>Run()</slot>
+  <slot>Stop()</slot>
+  <slot>Delete()</slot>
+  <slot>Up()</slot>
+  <slot>Down()</slot>
+  <slot>AddItem()</slot>
+  <slot>OnProperty()</slot>
+  <slot>SearchActivity()</slot>
+  <slot>CreateMyItem()</slot>
+  <slot>LogoClick()</slot>
+ </slots>
+</ui>
