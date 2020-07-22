@@ -18,7 +18,7 @@ from docx import Document
 from PyQt5.QtWidgets import *
 import time
 import urllib.request
-from imagesearch import *
+from 창업팀_RPA.imagesearch import *
 import pyautogui
 import sys
 import re
@@ -680,7 +680,7 @@ class Activity:
 
     def Image_Click(self, ImageFile):
         img = ImageFile  # 이미지 파일을 저장
-        pos = imagesearch(img)  # 이미지 파일과 일치하는 이미지의 위치를 반환하는 imagersearch함수호출
+        pos = 창업팀_RPA.imagesearch(img)  # 이미지 파일과 일치하는 이미지의 위치를 반환하는 imagersearch함수호출
         if pos[0] != -1:  # 찾았을 경우
             click_image(img, pos, 'left', 0.1)  # 이미지, 위치, 활성화할 마우스 버튼, 마우스가 원래 위치에서 새 위치로 이동하는 데 걸리는 시간 순
 

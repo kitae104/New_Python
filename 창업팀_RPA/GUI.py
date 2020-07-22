@@ -10,7 +10,7 @@ import xlrd
 import openpyxl
 import time
 from selenium import webdriver
-from Activity import *
+from 창업팀_RPA.Activity import *
 import keyboard
 
 # Qt디자이너로 만든 UI파일
