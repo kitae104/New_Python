@@ -67,6 +67,4 @@ from pedal.toolkit.utilities import prevent_operation
 prevent_operation("/")
 prevent_operation("*")
 
-
-
 resolve()
