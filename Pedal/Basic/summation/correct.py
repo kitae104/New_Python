@@ -4,4 +4,4 @@ def summate(values):
         s += v
     return s
 
-print(summate([1,2,3]) == 6)
+
