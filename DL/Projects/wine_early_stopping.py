@@ -1,4 +1,4 @@
-# 와인 종류 예측(그래프로 확인하기)
+# 와인 종류 예측(학습 자동 중단)
 import pandas as pd
 import numpy as np
 import tensorflow as tf
