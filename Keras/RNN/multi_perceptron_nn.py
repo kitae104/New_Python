@@ -123,11 +123,11 @@ pred_count = 50     # 최대 예측 개수 정의
 seq_out = ['g8', 'e8', 'e4', 'f8']
 pred_out = model.predict(x_train)
 
-for i in range(5):
+for i in range(pred_count):
     idx = np.argmax(pred_out[i])        # one-hot 인코딩을 인덱스 값으로 변환
     seq_out.append(idx2code[idx])       # seq_out는 최종 악보이므로 인덱스 값을 코드로 변환하여 저장
 
-print("full song prediction : ", seq_out)
+print("one step song prediction : ", seq_out)
 
 # 곡 전체 예측
 seq_in = ['g8', 'e8', 'e4', 'f8']
