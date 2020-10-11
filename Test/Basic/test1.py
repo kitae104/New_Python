@@ -7,3 +7,4 @@ elif month == 7:
   print('7월 예약 가능')
 else:
   print('5월~7월만 예약 가능')
+
