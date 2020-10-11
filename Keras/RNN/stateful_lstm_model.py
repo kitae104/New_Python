@@ -107,7 +107,7 @@ num_epochs = 2000
 
 for epoch_idx in range(num_epochs):
     print('epochs : ' + str(epoch_idx))
-    model.fit(x_train, y_train, epochs=1, batch_size=1, verbose=2, shuffule=False, callbacks=[history])
+    model.fit(x_train, y_train, epochs=1, batch_size=1, verbose=2, shuffle=False, callbacks=[history])
     model.reset_states()        # 모델 상태 초기화
 
 ################################################################################
