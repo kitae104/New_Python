@@ -3,6 +3,7 @@ import pandas as pd
 file_path = '../data/chipotle.tsv'
 chipo = pd.read_csv(file_path, sep='\t')
 
+<<<<<<< HEAD
 item_count = chipo['item_name'].value_counts()
 
 for idx, (val, cnt) in enumerate(item_count.iteritems()):
