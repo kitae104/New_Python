@@ -152,7 +152,7 @@ class Form(QMainWindow):
     def runActionFunc(self):
         runAction = QAction(QIcon('../../Utils/Images/menu_icon/run.png'), 'Run', self)
         runAction.setShortcut('Ctrl+R')
-        runAction.setStatusTip('Run RPA Application')  # 상태바에 출력할 정보
+        runAction.setStatusTip('Run RPA-2 Application')  # 상태바에 출력할 정보
         runAction.triggered.connect(self.scrip_run)  # 생성된 시그널을 위젯의 quit 메소드에 연결
         return runAction
 
