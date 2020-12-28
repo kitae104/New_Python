@@ -55,3 +55,5 @@ RPA/qtextbrowser_advanced.spec
 tutorial/db.sqlite3
 Data-Analysis/Text/.ipynb_checkpoints/
 TF2_WS/RNN/.ipynb_checkpoints/
+Chatbot/ch06_딥러닝_모델/chatbot_data.csv
+Chatbot/ch06_딥러닝_모델/cnn_model.h5
