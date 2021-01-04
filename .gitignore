@@ -62,3 +62,5 @@ Chatbot/ch04_임베딩/ratings.txt
 Chatbot/ch06_딥러닝_모델/mnist_model.h5
 Chatbot/ch06_딥러닝_모델/train.txt
 Chatbot/Toy_Chatbot/train_tools/qna/train_data.xlsx
+Chatbot/Toy_Chatbot/train_tools/dict/chatbot_dict.bin
+Chatbot/Toy_Chatbot/utils/user_dic.tsv
