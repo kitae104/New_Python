@@ -1,8 +1,19 @@
 # 챗봇 전처리 클래스
 from konlpy.tag import Komoran
+import pickle
+import jpype
 
 class Preprocess:
-    def __init__(self, userdic=None):   # 사용자 정의 사전 파일의 경로
+    def __init__(self, word2index_dic='', userdic=None):   # 사용자 정의 사전 파일의 경로
+
+        # 단어 인덱스 사전 불러오기
+        if (word2index_dic != ''):
+            f = open(word2index_dic, "rb")
+            self.word_index = pickle.load(f)
+            f.close()
+        else:
+            self.word_index = None
+
         # 형태소 분석기 초기화
         self.komoran = Komoran(userdic=userdic)
 
@@ -21,6 +32,7 @@ class Preprocess:
 
     # 형태소 분석기 POS 태거
     def pos(self, sentence):
+        jpype.attachThreadToJVM()
         return self.komoran.pos(sentence)
 
     # 불용어 제거 후, 필요한 품사 정보만 가져오기
@@ -32,3 +44,16 @@ class Preprocess:
                 word_list.append(p if without_tag is False else p[0])
         return word_list
 
+    # 키워드를 단어 인덱스 시퀀스로 변환
+    def get_wordidx_sequence(self, keywords):
+        if self.word_index is None:
+            return []
+
+        w2i = []
+        for word in keywords:
+            try:
+                w2i.append(self.word_index[word])
+            except KeyError:
+                # 해당 단어가 사전에 없는 경우, OOV 처리
+                w2i.append(self.word_index['OOV'])
+        return w2i
