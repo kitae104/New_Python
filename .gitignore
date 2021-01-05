@@ -64,3 +64,4 @@ Chatbot/ch06_딥러닝_모델/train.txt
 Chatbot/Toy_Chatbot/train_tools/qna/train_data.xlsx
 Chatbot/Toy_Chatbot/train_tools/dict/chatbot_dict.bin
 Chatbot/Toy_Chatbot/utils/user_dic.tsv
+Chatbot/Toy_Chatbot/train_tools/dict/corpus.txt
