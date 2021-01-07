@@ -65,3 +65,5 @@ Chatbot/Toy_Chatbot/train_tools/qna/train_data.xlsx
 Chatbot/Toy_Chatbot/train_tools/dict/chatbot_dict.bin
 Chatbot/Toy_Chatbot/utils/user_dic.tsv
 Chatbot/Toy_Chatbot/train_tools/dict/corpus.txt
+Chatbot/Toy_Chatbot/models/intent/intent_model.h5
+Chatbot/Toy_Chatbot/models/intent/total_train_data.csv
