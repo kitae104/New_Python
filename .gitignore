@@ -3,16 +3,16 @@ DL/CNN_RNN_GAN/gan_images/
 DL/CNN_RNN_GAN/model_lstm/
 DL/CNN_RNN_GAN/model_mnist/
 DL/Projects/model/
-Keras/레이어/preview/
-Keras/레이어/test/circle/
-Keras/레이어/test/rectangle/
-Keras/레이어/test/triangle/
-Keras/레이어/train/circle/
-Keras/레이어/train/
+Keras/?�이??preview/
+Keras/?�이??test/circle/
+Keras/?�이??test/rectangle/
+Keras/?�이??test/triangle/
+Keras/?�이??train/circle/
+Keras/?�이??train/
 RNN/RNN/.ipynb_checkpoints/
-RNN/앙상블/.ipynb_checkpoints/
-RNN/예측모델/.ipynb_checkpoints/
-RNN/케라스_모델_파라미터/.ipynb_checkpoints/
+RNN/?�상�?.ipynb_checkpoints/
+RNN/?�측모델/.ipynb_checkpoints/
+RNN/케?�스_모델_?�라미터/.ipynb_checkpoints/
 RPA/__pycache__/
 RPA/build/
 RPA/dist/
@@ -30,23 +30,23 @@ DL/CNN_RNN_GAN/.ipynb_checkpoints/
 Keras/기본 개념/.ipynb_checkpoints/
 Keras/기본 개념/graph/train/
 Keras/기본 개념/logs/
-Keras/레이어/.ipynb_checkpoints/
-Keras/수치 예측모델/.ipynb_checkpoints/
-Keras/수치입력 다중클래스분류모델/.ipynb_checkpoints/
-Keras/수치입력 이진분류모델/.ipynb_checkpoints/
-Keras/시계열수치입력 수치 예측 모델/.ipynb_checkpoints/
-Keras/영상입력 다중클래스분류모델/.ipynb_checkpoints/
-Keras/영상입력 수치예측모델/.ipynb_checkpoints/
-Keras/영상입력 이진분류모델/.ipynb_checkpoints/
+Keras/?�이??.ipynb_checkpoints/
+Keras/?�치 ?�측모델/.ipynb_checkpoints/
+Keras/?�치?�력 ?�중?�래?�분류모??.ipynb_checkpoints/
+Keras/?�치?�력 ?�진분류모델/.ipynb_checkpoints/
+Keras/?�계?�수치입???�치 ?�측 모델/.ipynb_checkpoints/
+Keras/?�상?�력 ?�중?�래?�분류모??.ipynb_checkpoints/
+Keras/?�상?�력 ?�치?�측모델/.ipynb_checkpoints/
+Keras/?�상?�력 ?�진분류모델/.ipynb_checkpoints/
 NLP/NLP_PREP/.ipynb_checkpoints/
 OpenCV/ch02/.ipynb_checkpoints/
 restApi chatbot server/.ipynb_checkpoints/
-RNN/RNN_데이터처리/.ipynb_checkpoints/
+RNN/RNN_?�이?�처�?.ipynb_checkpoints/
 RPA/Sample/
 seq2seq-chatbot/.ipynb_checkpoints/
 TF_WS/Basic/.ipynb_checkpoints/
 TF2_WS/Basic/.ipynb_checkpoints/
-모두의 딥러닝/run_project/.ipynb_checkpoints/
+모두???�러??run_project/.ipynb_checkpoints/
 debug.log
 Django/mysite/db.sqlite3
 Keras/기본 개념/graph/validation/
@@ -55,15 +55,21 @@ RPA/qtextbrowser_advanced.spec
 tutorial/db.sqlite3
 Data-Analysis/Text/.ipynb_checkpoints/
 TF2_WS/RNN/.ipynb_checkpoints/
-Chatbot/ch06_딥러닝_모델/chatbot_data.csv
-Chatbot/ch06_딥러닝_모델/cnn_model.h5
-Chatbot/ch04_임베딩/nvmc.model
-Chatbot/ch04_임베딩/ratings.txt
-Chatbot/ch06_딥러닝_모델/mnist_model.h5
-Chatbot/ch06_딥러닝_모델/train.txt
+Chatbot/ch06_?�러??모델/chatbot_data.csv
+Chatbot/ch06_?�러??모델/cnn_model.h5
+Chatbot/ch04_?�베??nvmc.model
+Chatbot/ch04_?�베??ratings.txt
+Chatbot/ch06_?�러??모델/mnist_model.h5
+Chatbot/ch06_?�러??모델/train.txt
 Chatbot/Toy_Chatbot/train_tools/qna/train_data.xlsx
 Chatbot/Toy_Chatbot/train_tools/dict/chatbot_dict.bin
 Chatbot/Toy_Chatbot/utils/user_dic.tsv
 Chatbot/Toy_Chatbot/train_tools/dict/corpus.txt
 Chatbot/Toy_Chatbot/models/intent/intent_model.h5
 Chatbot/Toy_Chatbot/models/intent/total_train_data.csv
+Chatbot/ch04_임베딩/ratings.txt
+Chatbot/ch06_딥러닝_모델/chatbot_data.csv
+Chatbot/ch06_딥러닝_모델/cnn_model.h5
+Chatbot/ch06_딥러닝_모델/mnist_model.h5
+Chatbot/Toy_Chatbot/model/intent/total_train_data.csv
+Chatbot/ch04_임베딩/nvmc.model
