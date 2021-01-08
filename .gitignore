@@ -73,3 +73,6 @@ Chatbot/ch06_딥러닝_모델/cnn_model.h5
 Chatbot/ch06_딥러닝_모델/mnist_model.h5
 Chatbot/Toy_Chatbot/model/intent/total_train_data.csv
 Chatbot/ch04_임베딩/nvmc.model
+Chatbot/Toy_Chatbot/models/ner/ner_model.h5
+Chatbot/ch06_딥러닝_모델/train.txt
+Chatbot/Toy_Chatbot/models/ner/ner_train.txt
