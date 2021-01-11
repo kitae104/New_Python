@@ -26,7 +26,7 @@ class NerModel:
         self.p = proprocess
 
     # 개체명 클래스 예측
-    def predic(self, query):
+    def predict(self, query):
         # 형태소 분석
         pos = self.p.pos(query)
 
