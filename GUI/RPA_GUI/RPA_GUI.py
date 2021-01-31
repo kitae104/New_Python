@@ -121,7 +121,7 @@ class Form(QWidget):
         # 상태바 추가 - 현재 날짜 추가
         #self.statusBar().showMessage(self.date.toString(Qt.DefaultLocaleLongDate))
 
-        self.setWindowTitle("RPA-2")
+        self.setWindowTitle("RPA-1-2")
         self.setWindowIcon(QIcon('../../Utils/Images/menu_icon/web.png'))  # 아이콘 추가
         self.resize(500, 350)  # 크기와 위치 설정
         self.center()  # 화면 가운데 위치시키기
