@@ -13,11 +13,11 @@ RNN/RNN/.ipynb_checkpoints/
 RNN/?�상�?.ipynb_checkpoints/
 RNN/?�측모델/.ipynb_checkpoints/
 RNN/케?�스_모델_?�라미터/.ipynb_checkpoints/
-RPA/__pycache__/
-RPA/build/
-RPA/dist/
-RPA/Tesseract-OCR/
-RPA/venv/
+RPA/RPA-1/__pycache__/
+RPA/RPA-1/build/
+RPA/RPA-1/dist/
+RPA/RPA-1/Tesseract-OCR/
+RPA/RPA-1/venv/
 Scikit-Learn/.ipynb_checkpoints/
 *.pyc
 Autoplotter/Basic/.ipynb_checkpoints/
@@ -42,7 +42,7 @@ NLP/NLP_PREP/.ipynb_checkpoints/
 OpenCV/ch02/.ipynb_checkpoints/
 restApi chatbot server/.ipynb_checkpoints/
 RNN/RNN_?�이?�처�?.ipynb_checkpoints/
-RPA/Sample/
+RPA/RPA-1/Sample/
 seq2seq-chatbot/.ipynb_checkpoints/
 TF_WS/Basic/.ipynb_checkpoints/
 TF2_WS/Basic/.ipynb_checkpoints/
@@ -50,8 +50,8 @@ TF2_WS/Basic/.ipynb_checkpoints/
 debug.log
 Django/mysite/db.sqlite3
 Keras/기본 개념/graph/validation/
-RPA/GUI.spec
-RPA/qtextbrowser_advanced.spec
+RPA/RPA-1/GUI.spec
+RPA/RPA-1/qtextbrowser_advanced.spec
 tutorial/db.sqlite3
 Data-Analysis/Text/.ipynb_checkpoints/
 TF2_WS/RNN/.ipynb_checkpoints/
